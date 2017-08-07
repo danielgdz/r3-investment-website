@@ -1,0 +1,78 @@
+// Copyright (C) arrowthemes, https://www.gnu.org/licenses/gpl.html GNU/GPL */
+
+//
+// Component: Article
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@article-margin-top:                            @global-grid-gutter;
+
+@article-title-font-size:                       @base-h2-font-size;
+@article-title-line-height:                     40px;
+@article-title-text-transform:					capitalize;
+
+@article-meta-font-size:                        round((@global-font-size * 0.85));
+@article-meta-line-height:                      30px;
+@article-meta-color:                            @global-color;
+
+@article-lead-color:                            @global-color;
+@article-lead-font-size:                        round((@global-font-size * 1.25));
+@article-lead-font-weight:						300;
+@article-lead-line-height:                      @base-h2-line-height;
+
+@article-divider-margin:                        @global-margin-large;
+@article-divider-border:                        @global-border;
+
+// Sub-object `uk-article-title`
+// ========================================================================
+
+.hook-article-title() {
+	margin-top: 0;
+    line-height: @article-title-line-height;
+    font-size: @article-title-font-size;
+    font-weight: @base-heading-font-weight;
+    padding-bottom: @panel-box-small-padding;
+    letter-spacing: @global-heading-letter-space;
+    display: block;
+    padding-bottom: 0;
+    .uk-module-title;
+}
+
+
+// Sub-object `uk-article-meta`
+// ========================================================================
+
+.hook-article-meta() {
+	text-transform: uppercase;
+    margin-top: 0;
+    color: lighten(@global-color, 5%);
+    letter-spacing: 1px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed fade(@global-heading-color, 20%);
+}
+
+
+// Sub-object `uk-article-lead`
+// ========================================================================
+
+.hook-article-lead() {}
+
+
+// Sub-object `uk-article-divider`
+// ========================================================================
+
+.hook-article-divider() {}
+
+
+// Miscellaneous
+// ========================================================================
+
+.hook-article-misc() {
+    .uk-article + .uk-article {
+        margin-top: 60px;
+    }
+}

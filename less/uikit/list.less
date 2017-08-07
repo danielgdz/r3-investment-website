@@ -1,0 +1,114 @@
+// Copyright (C) arrowthemes, https://www.gnu.org/licenses/gpl.html GNU/GPL */
+
+//
+// Component: List
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@list-line-border:                              @global-border;
+
+@list-striped-background:                       rgba(0, 0, 0, 0.02);
+
+
+// Modifier: `list-line`
+// ========================================================================
+
+.hook-list-line() {
+	border-top-style: dotted;
+}
+
+
+// Modifier: `list-striped`
+// ========================================================================
+
+.hook-list-striped() {}
+
+
+// Miscellaneous
+// ========================================================================
+
+.hook-list-misc() {
+	
+	ul.list-icons li i {
+		margin-right: 10px;
+	}
+
+	.uk-list-striped > li {box-shadow: 0 -1px 0 @list-line-border inset;}
+	.uk-list-striped > li:first-child {border-top: 1px solid @list-line-border;}
+
+	.list-icons {
+
+	    &.uk-grid {margin: 0;}
+
+	    padding-top: 10px;
+
+	    li {
+	        padding-left: 30px;
+	        position: relative;
+	        word-wrap: break-word;
+			.uk-flex;
+	            
+	        i {
+	            position: absolute;
+	            margin: 5px 0 0 -25px;
+	            line-height: 22px;
+	        }
+	    }
+
+	    &.tm-no-break li {
+	    	display: list-item !important;	
+	    }
+
+	   	&.uk-text-right li {
+	    	padding-left: 0;
+	    	padding-right: 30px;
+	    	.uk-flex-right;
+
+	    	i {
+	    		right: -10px;
+	    	}
+	    }
+
+	    &.uk-icons-large li i{
+			font-size: 20px;
+			margin: 5px 0 0 -30px;
+	    }
+
+	    &.uk-icons-xlarge li {
+			padding-left: 40px;
+	    }
+
+	    &.uk-icons-xlarge li i {
+			font-size: 32px;
+			margin: 5px 0 0 -45px;
+	    }
+	}
+
+	.uk-plain-list {
+	  padding-left: 0;
+	}
+
+	.uk-list > li:before, 
+	.uk-list > li:after {
+	  display: inline;
+	}
+
+	#iconfonts .list-icons {
+	 
+	    li {
+	        line-height: 35px;
+	        padding-left: 30px;
+	        word-wrap: break-word;
+		    
+		    i {
+		        font-size: 20px;
+		        margin: 5px 0 0 -30px;
+		    }
+	    }
+	}
+
+}

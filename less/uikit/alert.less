@@ -1,0 +1,73 @@
+// Copyright (C) arrowthemes, https://www.gnu.org/licenses/gpl.html GNU/GPL */
+
+//
+// Component: Alert
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@alert-margin-vertical:                         @global-margin;
+@alert-background:                              fade(@alert-color, 2%);
+@alert-color:                                   @global-primary-color;
+
+@alert-success-background:                      fade(@global-success-background, 2%);
+@alert-success-color:                           @global-success-background;
+
+@alert-warning-background:                      fade(@global-warning-background, 2%);
+@alert-warning-color:                           @global-warning-background;
+
+@alert-danger-background:                       fade(@global-danger-background, 2%);
+@alert-danger-color:                            @global-danger-background;
+
+
+// Component
+// ========================================================================
+
+.hook-alert() {
+	box-shadow: inset 0 0 0 1px fade(@alert-background, 20%),
+				inset 4px 0 0 @alert-color;
+	border-radius: @global-border-radius;
+	padding-left: 20px;
+}
+
+
+// Modifier: `uk-alert-success`
+// ========================================================================
+
+.hook-alert-success() {
+	box-shadow: inset 0 0 0 1px fade(@alert-success-background, 20%),
+				inset 4px 0 0 @alert-success-color;
+}
+
+
+// Modifier: `uk-alert-warning`
+// ========================================================================
+
+.hook-alert-warning() {
+	box-shadow: inset 0 0 0 1px fade(@alert-warning-background, 20%),
+				inset 4px 0 0 @alert-warning-color;
+}
+
+
+// Modifier: `uk-alert-danger`
+// ========================================================================
+
+.hook-alert-danger() {
+	box-shadow: inset 0 0 0 1px fade(@alert-danger-background, 20%),
+				inset 4px 0 0 @alert-danger-color;
+}
+
+
+// Miscellaneous
+// ========================================================================
+
+.hook-alert-misc() {
+
+	.uk-alert .uk-module-title:after {
+		border-color: inherit; 
+	}
+
+}

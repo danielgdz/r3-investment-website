@@ -1,0 +1,156 @@
+// Copyright (C) arrowthemes, https://www.gnu.org/licenses/gpl.html GNU/GPL */
+
+//
+// Component: Form
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@form-height:                                   @global-height;
+@form-border:                                   rgba(0, 0, 0, 0.15);
+@form-background:                               @global-background;
+@form-color:                                    @global-color;
+
+@form-focus-border:                             fade(@global-default-background, 75%);
+@form-focus-background:                         @global-background;
+@form-focus-color:                              @global-color;
+
+@form-disabled-border:                          @global-border;
+@form-disabled-background:                      @global-light-background;
+@form-disabled-color:                           @global-muted-color;
+
+@form-placeholder-color:                        fade(@global-color, 50%);
+
+@form-gutter:                                   @global-margin;
+
+@form-legend-border:                            @global-border;
+@form-legend-font-size:                         round((@global-font-size * 1.28));
+@form-legend-line-height:                       round((@form-legend-font-size * 1.66));
+
+@form-small-height:                             @global-small-height;
+@form-large-height:                             @global-large-height;
+@form-large-padding:                            8px 12px;
+@form-small-font-size:                          round((@global-font-size * 0.85));
+@form-large-font-size:                          @global-font-size;
+
+@form-danger-border:                            fade(@form-danger-color, 50%);
+@form-danger-background:                        fade(@form-danger-color, 10%);
+@form-danger-color:                             @global-danger-background;
+
+@form-success-border:                           fade(@form-success-color, 70%);
+@form-success-background:                       fade(@form-success-color, 10%);
+@form-success-color:                            @global-success-background;
+
+@form-blank-border:                             @global-border;
+
+@form-icon-width:                               @global-height;
+@form-icon-font-size:                           @global-font-size;
+@form-icon-color:                               @global-darkest-shadow;
+
+@form-font-weight:                              @global-font-weight;
+@form-font-size:                                @global-font-size;
+@form-input-border-radius:                      2px;
+
+// Component
+// ========================================================================
+
+.hook-form() { 
+    font-weight: @form-font-weight;
+    border-radius: @form-input-border-radius;
+    padding: 5px 10px;
+}
+
+// Focus state
+.hook-form-focus() {}
+
+// Disabled state
+.hook-form-disabled() {}
+
+// Legend
+.hook-form-legend() {}
+
+
+// Validation states
+// ========================================================================
+
+//
+// Error state
+//
+
+.hook-form-danger() {}
+
+//
+// Success state
+//
+
+.hook-form-success() {}
+
+
+// Style modifiers
+// ========================================================================
+
+.hook-form-blank() {}
+.hook-form-blank-focus() {}
+
+
+// Sub-object: `uk-form-label`
+// ========================================================================
+
+.hook-form-stacked-label() {}
+
+.hook-form-horizontal-label() {}
+
+
+// Miscellaneous
+// ========================================================================
+
+.hook-form-misc() {
+
+    // Adding more space to the label
+    .uk-form-label + input,
+    .uk-form-label + textarea { margin-top: 5px !important; }
+
+    // Form icon
+    .uk-form-icon > [class*='uk-icon-'] { 
+        z-index: 1;
+        margin-top: -8px;
+    }
+
+    .tm-textarea-icon {
+        > [class*='uk-icon-'] {top: 22px; }
+        textarea { padding-left: 40px !important; }
+    }
+
+    .uk-form input {
+        border-radius: @form-input-border-radius;
+    }
+
+    .uk-form label.radio {
+        line-height: 0.5;
+        padding-left: 30px;
+    }
+
+    // Reseting -webkit- autofill styling in Chrome browser
+    .uk-form input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0px @form-height @form-background inset !important;
+        border-color: @form-border !important;
+        -webkit-text-fill-color: @form-placeholder-color;
+    }
+
+    .uk-form input:-webkit-autofill:focus {
+        -webkit-box-shadow: 0 0 0px @form-height @form-focus-background inset !important;
+        border-color: @form-focus-border !important;
+        -webkit-text-fill-color: @form-focus-color;
+    }
+
+    // invalid fields
+    input:focus:invalid:focus, 
+    textarea:focus:invalid:focus,
+    select:focus:invalid:focus {
+        box-shadow: none;
+        border-color: @form-focus-border;
+    }
+}

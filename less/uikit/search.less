@@ -1,0 +1,171 @@
+// Copyright (C) arrowthemes, https://www.gnu.org/licenses/gpl.html GNU/GPL */
+
+//
+// Component: Search
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@search-width:                                  200px;
+@search-focus-width:                            200px;
+@search-height:                                 35px;
+@search-border:                                 fade(@global-headerbar-color, 30%);
+@search-focus-border:                           @global-primary-background;
+@search-background:                             @global-transparent;
+@search-color:                                  @global-headerbar-color;
+@search-placeholder-color:                      fade(@search-color, 50%);
+
+@search-icon-size:                              round((@global-font-size * 0.85));
+@search-icon-color:                             fade(@global-headerbar-color, 75%);
+
+@dropdown-search-margin-top:                    30px;
+@dropdown-search-background:                    @global-background;
+@dropdown-search-color:                         @global-color;
+@dropdown-search-navbar-margin-top:             10px;
+@dropdown-search-navbar-margin-right:           0;
+
+@nav-search-color:                              @global-color;
+@nav-search-active-background:                  @global-transparent;
+@nav-search-active-color:                       @global-contrast-color;
+@nav-search-header-color:                       @global-muted-color;
+@nav-search-divider-border:                     @global-border;
+@nav-search-nested-color:                       @global-color;
+@nav-search-nested-hover-color:                 @global-link-hover-color;
+
+@offcanvas-search-margin:                       0;
+@offcanvas-search-background:                   @global-transparent;
+@offcanvas-search-border:                       @global-border;
+@offcanvas-search-color:                        @global-color;
+@offcanvas-search-placeholder-color:            @global-muted-color;
+@offcanvas-search-icon-color:                   @global-color;
+
+
+// Component
+// ========================================================================
+
+.hook-search() {
+    padding: 0 15px;
+    margin: 0;
+}
+
+.hook-search-icon() {
+    left: 18px;
+    z-index: 3;
+}
+
+
+// Sub-object `uk-search-field`
+// ========================================================================
+
+.hook-search-field() {
+    cursor: pointer;
+    z-index: 1;
+    position: relative;
+    padding-left: 30px;
+    border-radius: @global-border-radius;
+    background-color: @search-background;
+    border: 1px solid @search-border;
+}
+
+.hook-search-field-focus() {
+    border: 1px solid @search-focus-border;
+}
+
+
+// Modifier: `uk-dropdown-search`
+// ========================================================================
+
+.hook-dropdown-search() {
+    padding: 0;
+    right: 15px;
+}
+
+
+// Modifier `uk-nav-search`
+// ========================================================================
+
+//
+// Items
+//
+
+.hook-nav-search() {}
+
+// Active
+.hook-nav-search-active() {
+    background-color: @global-primary-background;
+}
+
+//
+// Sub-object: `uk-nav-header`
+//
+
+.hook-nav-search-header() {
+    border-bottom: 1px solid @global-border;
+    color: @global-contrast-color;
+    background-color: @global-primary-background;
+    padding: 10px 15px;
+}
+
+//
+// Sub-object: `uk-nav-divider`
+//
+
+.hook-nav-search-divider() {
+    margin: 0;
+}
+
+
+// Search in offcanvas
+// ========================================================================
+
+.hook-offcanvas-search-field() {
+    padding: 0 @search-padding;
+    cursor: text;
+}
+
+
+// Miscellaneous
+// ========================================================================
+
+.hook-search-misc() {
+
+
+    // Sub-object `uk-search-field`
+    // ========================================================================
+
+    .uk-search-field:focus,
+    .uk-search.uk-active .uk-search-field {
+        padding-left: 30px;
+        cursor: text;
+    }
+
+
+    // Modifier: `uk-nav-search`
+    // ========================================================================
+
+    .uk-nav-search ul.uk-nav-sub { border-bottom: 1px solid @global-border; }
+    .uk-navbar-flip .uk-dropdown-search { padding: 0; }
+
+    .uk-nav-search .uk-nav-header {
+        font-family: @base-heading-font-family;
+        font-size: @base-h4-font-size;
+    }
+
+    .uk-nav-search > li > a {
+        font-family: @base-heading-font-family;
+        font-size: @base-h4-font-size;
+        padding: 15px 20px;
+        border-bottom: 1px solid @global-border;
+        -webkit-transition: all linear 0.05s;
+                transition: all linear 0.05s;
+
+        > div {
+            font-family: @base-body-font-family;
+            line-height: 26px;
+        }
+    }
+
+}

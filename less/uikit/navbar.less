@@ -1,0 +1,157 @@
+// Copyright (C) arrowthemes, https://www.gnu.org/licenses/gpl.html GNU/GPL */
+
+//
+// Component: Navbar
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@navbar-background:                             @global-transparent;
+@navbar-color:                                  @global-light-color;
+@navbar-link-color:                             @global-link-color;
+@navbar-link-hover-color:                       @global-link-hover-color;
+
+@navbar-nav-height:                             70px;
+@navbar-nav-line-height:                        @navbar-nav-height;
+@navbar-nav-padding-horizontal:                 25px;
+@navbar-nav-padding-small-horizontal:           20px;
+@navbar-nav-color:                              @navbar-color;
+@navbar-nav-font-size:                          16px;
+@navbar-nav-font-weight:                        @global-font-weight;
+@navbar-nav-font-family:                        @global-body-font-family;
+@navbar-nav-hover-background:                   @global-light-glow;
+@navbar-nav-hover-color:                        @navbar-color;
+@navbar-nav-onclick-background:                 @global-transparent;
+@navbar-nav-onclick-color:                      @navbar-color;
+@navbar-nav-active-background:                  @navbar-nav-hover-background;
+@navbar-nav-active-color:                       @navbar-color;
+@navbar-nav-item-border:                        @global-border;
+@navbar-nav-item-box-shadow:                    @global-light-shadow;
+@navbar-nav-text-transform:                     none;
+@navbar-nav-letter-spacing:                     0;
+
+@navbar-brand-font-size:                        18px;
+@navbar-brand-color:                            @navbar-color;
+@navbar-brand-hover-color:                      @navbar-brand-color;
+
+@navbar-toggle-font-size:                       @global-font-size;
+@navbar-toggle-color:                           @global-color;
+@navbar-toggle-hover-color:                     @global-primary-color;
+
+
+// Component
+// ========================================================================
+
+.hook-navbar() {}
+
+
+// Sub-object: `uk-navbar-nav`
+// ========================================================================
+
+.hook-navbar-nav() {
+
+    text-transform: @navbar-nav-text-transform;
+    letter-spacing: @navbar-nav-letter-spacing;
+
+}
+
+// Hover
+.hook-navbar-nav-hover() {}
+
+// OnClick
+.hook-navbar-nav-onclick() {}
+
+// Active
+.hook-navbar-nav-active() {}
+
+
+// Sub-object: `uk-navbar-content`
+// ========================================================================
+
+.hook-navbar-content() {
+    padding: 0 10px;
+}
+
+
+// Miscellaneous
+// ========================================================================
+
+.hook-navbar-misc() {
+
+    // Sub-object: `uk-navbar-nav`
+    // ========================================================================
+
+    .uk-navbar > .uk-navbar-nav:first-child > li:first-child > a {
+        border-left-width: 0;
+        box-shadow: 1px 0 0 @navbar-nav-item-box-shadow;
+    }
+
+    .uk-navbar-flip > .uk-navbar-nav > li:last-child > a {
+        border-right-width: 0;
+        box-shadow: none;
+    }
+
+    .uk-navbar-brand + .uk-navbar-nav > li:first-child > a,
+    .uk-navbar-flip > .uk-navbar-nav > li:first-child > a {
+        border-left: 1px solid @navbar-nav-item-border;
+        box-shadow: 1px 0 0 @navbar-nav-item-box-shadow,
+                    inset 1px 0 0 @navbar-nav-item-box-shadow;
+    }
+
+    .uk-navbar-nav-subtitle > div {
+        margin-top: 0px;
+    }
+
+    .uk-nav-navbar ul a,
+    .uk-nav-navbar > li > a {
+        color: @theme-menuitem-color;
+        font-family: @navbar-nav-font-family;
+        font-weight: @navbar-nav-font-weight;
+    }
+
+    // megamenu
+    .uk-navbar-nav li.uk-parent {
+        position: relative;
+    }
+
+    .uk-nav-navbar > li > a {
+        color: @theme-menuitem-color;
+        font-family: @navbar-nav-font-family;
+        font-weight: @navbar-nav-font-weight;
+    }
+
+    .uk-nav-navbar ul,
+    .uk-nav-navbar ul > li.uk-parent > ul {
+        padding: 0 !important;
+        position: absolute;
+        left: 100%;
+        width: @dropdown-width;
+        background-color: @theme-menubar-dropdown-background;
+        opacity: 0;
+        top: 0;
+        z-index: 999;
+        visibility: hidden;
+    }
+
+    li.uk-parent > ul.uk-dropdown-flip {
+        left: auto !important;
+        right: 100%;
+    }
+
+    .uk-nav-navbar ul a:hover {
+        color: @theme-menuitem-hover-color;
+        background-color: @theme-menuitem-hover-background;
+    }
+
+    .uk-nav-navbar > li.uk-parent:hover > ul > li.uk-parent:hover > ul,
+    .uk-nav-navbar > li.uk-parent:hover > ul,
+    .uk-nav-navbar .uk-nav-sub li.uk-parent:hover > ul {
+        opacity: 1;
+        visibility: visible;
+        -webkit-animation: @dropdown-navbar-animation 0.2s ease-in-out;
+                animation: @dropdown-navbar-animation 0.2s ease-in-out;
+    }
+}

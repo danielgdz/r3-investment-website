@@ -1,0 +1,83 @@
+// Copyright (C) arrowthemes, https://www.gnu.org/licenses/gpl.html GNU/GPL */
+
+//
+// Component: Off-canvas
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@offcanvas-z-index:                             @global-z-index;
+
+@offcanvas-bar-background:                      darken(@global-secondary-background, 7.5%);
+@offcanvas-bar-width:                           250px;
+
+@offcanvas-panel-margin:                        20px;
+@offcanvas-panel-color:                         @global-contrast-color;
+@offcanvas-panel-title-color:                   @global-contrast-color;
+@offcanvas-panel-link-color:                    @global-link-color;
+@offcanvas-panel-link-hover-color:              @global-link-hover-color;
+
+@offcanvas-background:                          rgba(0, 0, 0, 0.3);
+
+
+// Component
+// ========================================================================
+
+.hook-offcanvas() {}
+
+
+// Sub-object `uk-offcanvas-bar`
+// ========================================================================
+
+.hook-offcanvas-bar() {}
+
+
+// Panel in offcanvas
+// ========================================================================
+
+.hook-offcanvas-panel() {}
+
+
+// Miscellaneous
+// ========================================================================
+
+.hook-offcanvas-misc() {
+
+    .uk-nav-offcanvas {
+        ul.uk-nav-sub {
+            background: @global-lighter-shadow;
+        }
+
+        > li.uk-parent {
+            background: @offcanvas-bar-background;
+            position: relative;
+        }
+    }
+
+    .uk-offcanvas {
+
+        .tm-menu-heading {
+            font-weight: bold;
+            border-bottom: 1px solid @global-darkest-shadow;
+            box-shadow: 0 1px 0 @global-lighter-shadow;
+            padding-top: 10px !important;
+        }
+
+        input.uk-search-field {
+            padding: 0 0 0 40px;
+            background: @global-darker-shadow;
+            border-radius: @global-border-radius;
+            border-color: @global-darkest-shadow;
+            font-size: round((@global-font-size*0.85));
+            color: @offcanvas-panel-color;
+            box-shadow: 0 1px 0 @global-lighter-shadow;
+        }
+
+    }
+
+    .uk-offcanvas-bar .uk-parent.uk-open > div {overflow: visible !important;}
+
+}

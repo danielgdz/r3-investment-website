@@ -1,0 +1,40 @@
+// Copyright (C) arrowthemes, https://www.gnu.org/licenses/gpl.html GNU/GPL */
+
+//
+// Component: Thumbnail
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@thumbnail-border:                              rgba(113, 164, 22, 0.5);
+@thumbnail-background:                          @global-transparent;
+@thumbnail-hover-border:                        darken(@global-border, 10%);
+@thumbnail-hover-background:                    @global-background;
+
+@thumbnail-caption-color:                       @global-color;
+@thumbnail-padding: 							4px;
+@thumbnail-border-width:						1px;
+
+// Component
+// ========================================================================
+
+.hook-thumbnail() {}
+
+.hook-thumbnail-hover() {}
+
+
+// Caption
+// ========================================================================
+
+.hook-thumbnail-caption() {
+	padding: 10px;
+}
+
+
+// Miscellaneous
+// ========================================================================
+
+.hook-thumbnail-misc() {}

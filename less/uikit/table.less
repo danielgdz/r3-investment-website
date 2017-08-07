@@ -1,0 +1,56 @@
+// Copyright (C) arrowthemes, https://www.gnu.org/licenses/gpl.html GNU/GPL */
+
+//
+// Component: Table
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@table-margin-vertical:                         @global-margin;
+
+@table-caption-color:                           @global-muted-color;
+@table-caption-font-size:                       round((@global-font-size * 0.85)); // 12px
+
+@table-striped-background:                      @global-primary-light-background;
+
+@table-hover-background:                        darken(@global-primary-light-background, 3%);
+
+// Component
+// ========================================================================
+
+.hook-table() {
+	border-bottom: 1px solid @global-primary-light-background;
+}
+
+
+// Miscellaneous
+// ========================================================================
+
+.hook-table-misc() {
+
+	.uk-table {
+		border: 1px solid @global-primary-light-background;
+
+		thead {
+			background-color: @global-primary-background;
+			color: @global-contrast-color;
+		}
+
+		tfoot {
+			font-style: normal;
+			font-size: @global-font-size;
+		}
+
+		caption {
+			color: fade(@global-color, 50%);
+		}
+	}
+
+	.table-bordered th,
+	.table-bordered td {
+		border-color: @global-primary-light-background;
+	}
+}

@@ -1,0 +1,190 @@
+// Copyright (C) arrowthemes, https://www.gnu.org/licenses/gpl.html GNU/GPL */
+
+//
+// Component: Base
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@base-body-background:                          @global-background;
+@base-body-font-family:                         @global-body-font-family;
+@base-body-font-weight:                         @global-font-weight;
+@base-body-font-size:                           @global-font-size;
+@base-body-line-height:                         @global-line-height;
+@base-body-color:                               @global-color;
+
+@base-link-color:                               @global-link-color;
+@base-link-hover-color:                         @global-link-hover-color;
+
+@base-selection-background:                     fade(@global-primary-background, 75%);
+@base-selection-color:                          @global-contrast-color;
+
+@base-margin-vertical:                          @global-margin;
+
+@base-heading-font-weight:                      @global-heading-font-weight;
+@base-heading-font-family:                      @global-heading-font-family;
+@base-heading-color:                            @global-heading-color;
+@base-heading-margin-top:                       @global-margin-large;
+@base-heading-text-transform:                   @global-heading-text-transform;
+@base-h1-font-size:                             42px;
+@base-h1-line-height:                           48px;
+@base-h2-font-size:                             32px;
+@base-h2-line-height:                           36px;
+@base-h3-font-size:                             24px;
+@base-h3-line-height:                           32px;
+@base-h4-font-size:                             18px;
+@base-h4-line-height:                           32px;
+@base-h5-font-size:                             16px;
+@base-h5-line-height:                           22px;
+@base-h6-font-size:                             14px;
+@base-h6-line-height:                           18px;
+
+@base-hr-border:                                @global-border;
+
+@base-blockquote-border:                        @global-light-background;
+@base-blockquote-font-size:                     @base-h4-line-height;
+@base-blockquote-line-height:                   @base-h1-line-height;
+
+@base-code-color:                               @global-primary-color;
+@base-code-font-size:                           @global-font-size;
+
+@base-pre-background:                           @global-transparent;
+@base-pre-color:                                fade(@global-color, 60%);
+@base-pre-font-size:                            @global-font-size;
+@base-pre-line-height:                          round((@base-pre-font-size * 1.85));
+@base-blockquote-small-color:                   @global-muted-color;
+
+
+// Body
+// ========================================================================
+
+.hook-base-body() {}
+
+
+// Code and preformatted text
+// ========================================================================
+
+.hook-base-code() {
+    i { font-style: normal; }
+}
+
+.hook-base-code-reset() {}
+
+.hook-base-pre() { 
+    padding: 20px;
+    border: 1px solid @global-dark-shadow;
+    white-space: pre-wrap;
+    word-break: break-word;
+    box-shadow: inset 4px 0 @global-dark-shadow;
+
+    i { font-style: normal; }
+}
+
+
+// Miscellaneous
+// ========================================================================
+
+.hook-base-misc() {
+
+    blockquote {
+    	font-family: @base-heading-font-family;
+		font-style: normal;
+		border: 0 none;
+        padding-left: 0;
+        position: relative;
+        margin: 0;
+        
+        p {
+            line-height: @base-blockquote-line-height;
+            font-weight: 300;
+            letter-spacing: @global-heading-letter-space;
+            font-size: @base-h3-font-size;
+        
+            strong {
+                font-weight: normal;
+                color: @global-primary-color;
+            }
+        }
+        
+        small { color: @base-blockquote-small-color; }
+        
+        .author,
+        .jobtitle{
+            font-weight: normal;
+            line-height: round((@global-line-height*1.2));
+            display: block;
+        }
+
+        .author {
+        	font-size: @base-h3-font-size;
+            margin-top: 15px; 
+            
+            &:empty {
+                display: none;
+            }
+        }
+
+        .jobtitle {
+            font-size: @base-h4-font-size;
+        }
+    }
+
+    .tm-quote {
+        line-height: @base-blockquote-line-height;
+    }
+
+    // testimonials
+    .tm-testimonial-avatar {
+        border: 1px solid @global-primary-background;
+        box-shadow: 0px 4px 0 @global-primary-background;
+        border-width: 1px 1px 0 1px;
+        border-top-color: #dadada;
+        border-right-color: #dadada;
+        border-radius: 4px;
+        padding: 3px;
+    }
+
+    .tm-testimonial {
+        strong {
+            font-weight: normal;
+            color: @global-primary-color;
+        }
+
+        .author, 
+        .jobtitle {
+            padding-left: 80px;
+        }
+    }
+
+    .quote-icon {
+        font-size: @base-h1-font-size*3;
+        position: absolute;
+        left: 100px;
+        bottom: @global-grid-gutter;
+        color: fade(@global-color, 5%);
+    }
+
+    @media (max-width: @breakpoint-medium) {
+        blockquote p {
+            font-size: 20px;
+            line-height: 2;
+        }
+
+        .tm-testimonial .author,
+        .tm-testimonial .jobtitle {
+            padding-left: 0;
+        }
+    }
+
+    // hr
+
+    hr { 
+        border-color: fade(@global-primary-background, 30%); 
+        border-style: dashed;
+    }
+    .tooltip hr { display: none; }
+    
+}

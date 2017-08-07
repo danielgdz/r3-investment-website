@@ -1,0 +1,246 @@
+// Copyright (C) arrowthemes, https://www.gnu.org/licenses/gpl.html GNU/GPL */
+
+//
+// Component: Button
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@button-height:                                 @global-height;
+@button-mini-height:                            @global-mini-height;
+@button-small-height:                           @global-small-height;
+@button-large-height:                           45px;
+@button-large-padding-horizontal:               25px;
+
+@button-font-size:                              1rem;
+@button-font-family:                            @global-body-font-family;
+@button-line-height:                            @global-height;
+@button-mini-line-height:                       @global-mini-height;
+@button-small-line-height:                      @global-small-height;
+@button-large-line-height:                      45px;
+
+@button-mini-font-size:                         round((@global-font-size * 0.78));
+@button-small-font-size:                        round((@global-font-size * 0.85));
+@button-large-font-size:                        round((@global-font-size * 1.14));
+
+@button-background:                             @global-secondary-background;
+@button-color:                                  @global-contrast-color;
+@button-hover-background:                       desaturate(darken(@button-background, 3%), 10%);
+@button-hover-color:                            @global-contrast-color;
+@button-active-background:                      darken(@button-hover-background, 3%);
+@button-active-color:                           @global-contrast-color;
+
+@button-primary-background:                     @global-primary-background;
+@button-primary-color:                          @global-contrast-color;
+@button-primary-hover-background:               desaturate(darken(@button-primary-background, 3%), 3%);
+@button-primary-hover-color:                    @global-contrast-color;
+@button-primary-active-background:              darken(@button-primary-hover-background, 3%);
+@button-primary-active-color:                   @global-contrast-color;
+
+@button-success-background:                     @global-success-background;
+@button-success-color:                          @global-contrast-color;
+@button-success-hover-background:               desaturate(darken(@button-success-background, 3%), 10%);
+@button-success-hover-color:                    @global-contrast-color;
+@button-success-active-background:              darken(@button-success-hover-background, 3%);
+@button-success-active-color:                   @global-contrast-color;
+
+@button-danger-background:                      @global-danger-background;
+@button-danger-color:                           @global-contrast-color;
+@button-danger-hover-background:                desaturate(darken(@button-danger-background, 3%), 10%);
+@button-danger-hover-color:                     @global-contrast-color;
+@button-danger-active-background:               darken(@button-danger-hover-background, 3%);
+@button-danger-active-color:                    @global-contrast-color;
+
+@button-disabled-background:                    @global-light-background;
+@button-disabled-color:                         @global-muted-color;
+
+@button-link-color:                             @global-link-color;
+@button-link-hover-color:                       @global-link-hover-color;
+@button-link-disabled-color:                    @global-muted-color;
+
+@button-simple-background:                      @global-background;
+@button-simple-hover-background:                desaturate(darken(@button-simple-background, 3%), 10%);
+@button-simple-color:                           @global-color;
+
+@button-line-background:                        none;
+@button-line-color:                             @button-primary-background;
+@button-line-border:                            @button-primary-background;
+@button-line-hover-color:                       @global-contrast-color;
+@button-line-hover-background:                  @global-primary-background;
+@button-line-hover-border:                      darken(@button-line-hover-background, 3%);
+
+// Component
+// ========================================================================
+
+.hook-button() {
+    border-radius: @global-border-radius;
+    border: 1px solid @global-border;
+    padding: 0 15px;
+    box-shadow: inset 0 1px 0 @global-light-shadow;
+    -webkit-transition: @global-transition;
+            transition: @global-transition;
+
+    i {
+        -webkit-transition: 200ms ease-in-out;
+           -moz-transition: 200ms ease-in-out;
+                transition: 200ms ease-in-out;
+    }
+}
+
+.hook-button-hover() { 
+
+    &:not(.uk-button-link) > i.uk-icon-chevron-right {
+        webkit-transform: translate(3px,0);
+          -moz-transform: translate(3px,0);
+               transform: translate(3px,0);
+    }
+
+}
+
+.hook-button-active() { }
+
+
+// Color modifiers
+// ========================================================================
+
+//
+// Modifier: `uk-button-primary`
+//
+
+.hook-button-primary() {}
+.hook-button-primary-hover() {}
+.hook-button-primary-active() {}
+
+//
+// Modifier: `uk-button-success`
+//
+
+.hook-button-success() {}
+.hook-button-success-hover() {}
+.hook-button-success-active() {}
+
+//
+// Modifier: `uk-button-danger`
+//
+
+.hook-button-danger() {}
+.hook-button-danger-hover() {}
+.hook-button-danger-active() {}
+
+
+// Disabled state
+// ========================================================================
+
+.hook-button-disable() {
+    box-shadow:none;
+    background-image: none;
+}
+
+
+// Modifier: `uk-button-link`
+// ========================================================================
+
+.hook-button-link() { 
+    box-shadow:none; 
+    padding: 0;
+}
+
+
+// Size modifiers
+// ========================================================================
+
+.hook-button-large() {}
+
+
+// Miscellaneous
+// ========================================================================
+
+.hook-button-misc() {
+
+    /* Sub-object `uk-button-group`
+     ========================================================================== */
+
+    .uk-button-group > .uk-button:not(:first-child):not(:last-child),
+    .uk-button-group > div:not(:first-child):not(:last-child) .uk-button { border-radius: 0; }
+
+    .uk-button-group > .uk-button:first-child,
+    .uk-button-group > div:first-child .uk-button {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .uk-button-group > .uk-button:last-child,
+    .uk-button-group > div:last-child .uk-button {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border-left: 1px solid @global-lighter-shadow;
+    }
+
+    .uk-button-group > .uk-button:not(:first-child):not(:last-child),
+    .uk-button-group > div:not(:first-child):not(:last-child) .uk-button {
+        border-left: 1px solid @global-lighter-shadow;
+    }
+
+    .uk-button-line,
+    .uk-button.uk-button-line {
+        background: @button-line-background !important;
+        border: 1px solid @button-line-border;
+        color: @button-line-color;
+        border-radius: @global-border-radius;
+    }
+
+    .uk-button-line:hover,
+    .uk-button.uk-button-line:hover {
+        background: @button-line-hover-background !important;
+        border: 1px solid @button-line-hover-border !important;
+        color: @button-line-hover-color;
+    }
+
+    .uk-button-secondary {
+        background-color: @global-secondary-background;
+        color: @global-contrast-color;
+    }
+
+    .uk-button-secondary:hover {
+        background-color: desaturate(darken(@global-secondary-background, 3%), 3%);
+    }
+
+    .uk-button-secondary:focus,
+    .uk-button-secondary:active {
+        background-color: darken(@global-secondary-background, 3%);
+    }
+
+    .uk-form input[type="submit"] {
+        border-radius: @global-border-radius;
+        font-family: @button-font-family;
+        border: 1px solid @global-border;
+        font-size: @button-font-size;
+    
+        &.uk-button-primary {
+            color: @button-primary-color;
+        }
+
+        &.uk-button-default {
+            color: @button-color;
+        }
+    }
+
+    .uk-button  {
+        i:before {
+            font-size: 12px;
+            margin-left: 5px;
+        }
+
+        &.uk-button-large i:before {
+            font-size: 14px;
+        }
+    }
+
+    a.btn-link {
+        font-family: @global-body-font-family;
+        font-size: @global-font-size;
+    }
+}

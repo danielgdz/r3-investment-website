@@ -1,0 +1,34 @@
+// Copyright (C) arrowthemes, https://www.gnu.org/licenses/gpl.html GNU/GPL */
+
+//
+// Component: Close
+//
+// ========================================================================
+
+
+// Component
+// ========================================================================
+
+.hook-close() {
+	opacity: 1;
+	position: relative;
+	z-index: 10;
+}
+
+// Modifier: `uk-close-alt`
+// ========================================================================
+
+.hook-close-alt() {
+	background-color: @global-background;
+	padding: 5px;
+}
+
+// Miscellaneous
+// ========================================================================
+
+.hook-close-misc() {
+
+	.uk-alert .uk-close:after {
+		margin-top: 5px;
+	}
+}

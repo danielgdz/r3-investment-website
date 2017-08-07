@@ -1,0 +1,439 @@
+// Copyright (C) arrowthemes, https://www.gnu.org/licenses/gpl.html GNU/GPL */
+
+//
+// Component: Block
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@block-padding-vertical:                              40px;
+@block-padding-vertical-large:                        40px;
+@block-padding-vertical-small:                        20px;
+
+@block-large-padding-vertical-medium:				  60px;
+@block-large-padding-vertical-large:                  120px;
+
+@block-default-background:                            @global-background;
+@block-muted-background:                              @global-light-background;
+@block-primary-background:                            @global-primary-background;
+@block-secondary-background:                          @global-secondary-background;
+
+@block-border:                                        @global-border;
+@block-muted-border:                                  desaturate(darken(@block-muted-background, 5%), 5%);
+@block-primary-border:                                desaturate(darken(@block-primary-background, 5%), 5%);
+@block-secondary-border:                              desaturate(darken(@block-secondary-background, 5%), 10%);
+
+@block-primary-base-color:                            @global-contrast-color;
+@block-primary-base-link-color:                       darken(@global-link-color, 40%);
+@block-primary-base-link-hover-color:                 darken(@global-link-color, 20%);
+
+@block-secondary-base-color:                          @global-contrast-color;
+@block-secondary-base-link-color:                     @global-link-color;
+@block-secondary-base-link-hover-color:               @global-link-hover-color;
+@block-secondary-base-link-hover-text-decoration:     none;
+@block-secondary-base-em-color:                       @global-secondary-color;
+@block-secondary-base-heading-color:                  @global-contrast-color;
+@block-secondary-base-hr-border:                      fade(@global-secondary-color, 15%);
+
+@block-secondary-button-background:                   desaturate(lighten(@block-secondary-background, 8%), 10%);
+@block-secondary-button-color:                        @global-secondary-highlight-color;
+@block-secondary-button-hover-background:             lighten(@block-secondary-button-background, 8%);
+@block-secondary-button-hover-color:                  @global-contrast-color;
+@block-secondary-button-active-background:            lighten(@block-secondary-button-hover-background, 4%);
+@block-secondary-button-active-color:                 @block-secondary-button-color;
+
+@block-secondary-button-primary-background:           @button-primary-background;
+@block-secondary-button-primary-color:                @button-primary-color;
+@block-secondary-button-primary-hover-background:     @button-primary-hover-background;
+@block-secondary-button-primary-hover-color:          @button-primary-hover-color;
+@block-secondary-button-primary-active-background:    @button-primary-active-background;
+@block-secondary-button-primary-active-color:         @button-primary-active-color;
+
+@block-secondary-icon-button-background:              @global-transparent;
+@block-secondary-icon-button-color:                   @block-secondary-base-link-color;
+@block-secondary-icon-button-hover-background:        @global-transparent;
+@block-secondary-icon-button-hover-color:             @block-secondary-base-link-hover-color;
+@block-secondary-icon-button-active-background:       @global-dark-shadow;
+@block-secondary-icon-button-active-color:            @global-contrast-color;
+
+@block-secondary-subnav-color:                        @block-secondary-base-link-color;
+@block-secondary-subnav-hover-color:                  @block-secondary-base-link-hover-color;
+@block-secondary-subnav-hover-text-decoration:        none;
+@block-secondary-subnav-active-color:                 @global-link-color;
+@block-secondary-subnav-pill-active-color:            @global-contrast-color;
+
+@block-secondary-subnav-line-border:                  fade(@global-secondary-color, 20%);
+
+@block-secondary-text-muted-color:                    fade(@global-secondary-color, 60%);
+@block-secondary-text-primary-color:                  @global-contrast-color;
+
+@block-secondary-badge-border:                        desaturate(lighten(@global-secondary-background, 10%), 5%);
+@block-secondary-badge-background:                    desaturate(lighten(@global-secondary-background, 10%), 5%);
+@block-secondary-badge-color:                         @global-secondary-highlight-color;
+
+
+
+// Component
+// ========================================================================
+
+.hook-block() {}
+
+
+// Color modifier
+// ========================================================================
+
+.hook-block-default() {}
+
+.hook-block-muted() {}
+
+.hook-block-primary() {
+
+    a:not([class*="uk"]),
+    .uk-link  { color: @block-primary-base-link-color; }
+
+    a:not([class*="uk"]):hover,
+    .uk-link:hover {
+        color: @block-primary-base-link-hover-color;
+        text-decoration: none;
+    }
+
+    color: @block-primary-base-color;
+
+    .uk-panel-title {
+        color: @block-primary-base-color;
+    }
+
+    .uk-subnav > * > * {
+        color: @block-primary-base-color;
+    
+        &:hover {
+            color: @global-secondary-color;
+        }
+    }
+
+    // Grid
+
+    // Border color for 'uk-grid-divider'
+    .uk-grid-divider > [class*='uk-width-1-']:not(.uk-width-1-1):nth-child(n+2),
+    .uk-grid-divider > [class*='uk-width-2-']:nth-child(n+2),
+    .uk-grid-divider > [class*='uk-width-3-']:nth-child(n+2),
+    .uk-grid-divider > [class*='uk-width-4-']:nth-child(n+2),
+    .uk-grid-divider > [class*='uk-width-5-']:nth-child(n+2),
+    .uk-grid-divider > [class*='uk-width-6-']:nth-child(n+2),
+    .uk-grid-divider > [class*='uk-width-7-']:nth-child(n+2),
+    .uk-grid-divider > [class*='uk-width-8-']:nth-child(n+2),
+    .uk-grid-divider > [class*='uk-width-9-']:nth-child(n+2) { border-left-color: @block-primary-border; }
+
+    @media (min-width: @breakpoint-medium) {
+
+        .uk-grid-divider > [class*='uk-width-medium-']:not(.uk-width-medium-1-1):nth-child(n+2) { border-left-color: @block-primary-border; }
+
+    }
+
+    @media (min-width: @breakpoint-large) {
+
+        .uk-grid-divider > [class*='uk-width-large-']:not(.uk-width-large-1-1):nth-child(n+2) { border-left-color: @block-primary-border; }
+
+    }
+
+    .uk-grid-divider:empty { border-top-color: @block-primary-border; }
+
+    // Panel
+
+    // 'uk-panel-box-primary'
+    .uk-panel-box-primary {
+        border-color: @block-primary-border;
+        background-color: desaturate(darken(@block-primary-background, 2%), 2%);
+    }
+
+    // background color for uk-panel-teaser
+    .uk-panel-teaser { background: darken(@global-primary-background, 1%); }
+
+    // border-color for 'uk-panel-header'
+    .uk-panel-header .uk-panel-title::after { 
+        border-bottom-color: @global-contrast-color;
+    }
+ 
+    // Titles
+
+    h1, h2, h3, h4, h5, h6 {
+        color: @block-primary-base-color;
+    }
+
+    // Placeholder
+
+    .uk-form :-ms-input-placeholder { color: fade(@block-primary-base-color, 50%) !important; }
+    .uk-form ::-moz-placeholder { color: fade(@block-primary-base-color, 50%); }
+    .uk-form ::-webkit-input-placeholder { color: fade(@block-primary-base-color, 50%); }
+
+    // Form
+
+    .uk-form select,
+    .uk-form textarea,
+    .uk-form input:not([type]),
+    .uk-form input[type="text"],
+    .uk-form input[type="password"],
+    .uk-form input[type="email"] {
+        color: fade(@block-primary-base-color, 80%);
+        box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.04);
+        background-color: @global-dark-shadow;
+
+        /* Focus state */
+        &:focus {
+            border-color: fade(@block-primary-base-color, 40%);
+            color: fade(@block-primary-base-color, 80%);
+            background-color: @global-transparent;
+        }
+    }
+
+    // Nav
+
+    .uk-nav-side > li > a {
+        border-top: @global-light-shadow;
+    }
+
+
+    // Selection
+
+    ::-moz-selection {
+        background: fade(@global-secondary-background, 75%);
+        color: @global-contrast-color;
+        text-shadow: none;
+    }
+
+    ::selection {
+        background: fade(@global-secondary-background, 75%);
+        color: @global-contrast-color;
+        text-shadow: none;
+    }
+
+    // shortcodes
+
+    .tm-block-left {
+        background-color: darken(@global-primary-background, 10%);
+    }
+
+
+}
+
+.hook-block-secondary() {
+
+    color: @block-secondary-base-color;
+
+    .uk-module-title:after,
+    > .uk-panel-title:after {
+        border-bottom-color: @block-secondary-base-link-color;
+    }
+
+    .uk-module-title-alt:before, 
+    .uk-module-title-alt:after {
+        background-color: @block-secondary-base-link-color;
+    }
+
+    &.tm-darker {
+        background-color: saturate(darken(@block-secondary-background, 3%), 3%);
+    }
+
+    &.tm-lighter {
+        background-color: saturate(lighten(@block-primary-background, 3%), 3%);
+    }
+
+    // Base
+    // ========================================================================
+
+    //
+    // Link
+    //
+
+    a:not([class*="uk"]),
+    .uk-link  { color: @block-secondary-base-link-color; }
+
+    a:not([class*="uk"]):hover,
+    .uk-link:hover {
+        color: @block-secondary-base-link-hover-color;
+        text-decoration: @block-secondary-base-link-hover-text-decoration;
+    }
+
+    //
+    // Emphasize
+    //
+
+    em { color: @block-secondary-base-em-color; }
+
+    //
+    // Headings
+    //
+
+    h1, h2, h3, h4, h5, h6, .uk-panel-header .uk-panel-title { 
+        color: @block-secondary-base-heading-color;
+        border-bottom-color: @block-secondary-base-heading-color;
+    }
+
+    //
+    // Horizontal rules
+    //
+
+    hr { border-top-color: @block-secondary-base-hr-border; }
+
+    //
+    // Placeholder
+    //
+
+    .uk-form :-ms-input-placeholder { color: fade(@panel-box-secondary-color, 50%) !important; }
+    .uk-form ::-moz-placeholder { color: fade(@panel-box-secondary-color, 50%); }
+    .uk-form ::-webkit-input-placeholder { color: fade(@panel-box-secondary-color, 50%); }
+
+
+    //
+    // Form
+    //
+
+    .uk-form select,
+    .uk-form textarea,
+    .uk-form input:not([type]),
+    .uk-form input[type="text"],
+    .uk-form input[type="password"],
+    .uk-form input[type="email"] {
+        color: fade(@block-secondary-base-color, 80%);
+
+        /* Focus state */
+        &:focus {
+            color: fade(@block-secondary-base-color, 80%);
+            background-color: @global-transparent;
+        }
+
+    }
+
+    // Nav
+    
+    .uk-nav-side > li > a {
+        border-top: @global-light-shadow;
+    }
+
+    // Badge
+    // ========================================================================
+
+    .uk-badge {
+        border-color: @block-secondary-badge-border !important;
+        background-color: @block-secondary-badge-background !important;
+        color: @block-secondary-badge-color !important;
+    }
+
+
+    // Grid
+    // ========================================================================
+
+    // Border color for 'uk-grid-divider'
+    .uk-grid-divider > [class*='uk-width-1-']:not(.uk-width-1-1):nth-child(n+2),
+    .uk-grid-divider > [class*='uk-width-2-']:nth-child(n+2),
+    .uk-grid-divider > [class*='uk-width-3-']:nth-child(n+2),
+    .uk-grid-divider > [class*='uk-width-4-']:nth-child(n+2),
+    .uk-grid-divider > [class*='uk-width-5-']:nth-child(n+2),
+    .uk-grid-divider > [class*='uk-width-6-']:nth-child(n+2),
+    .uk-grid-divider > [class*='uk-width-7-']:nth-child(n+2),
+    .uk-grid-divider > [class*='uk-width-8-']:nth-child(n+2),
+    .uk-grid-divider > [class*='uk-width-9-']:nth-child(n+2) { border-left-color: @block-secondary-border; }
+
+    @media (min-width: @breakpoint-medium) {
+
+        .uk-grid-divider > [class*='uk-width-medium-']:not(.uk-width-medium-1-1):nth-child(n+2) { border-left-color: @block-secondary-border; }
+
+    }
+
+    @media (min-width: @breakpoint-large) {
+
+        .uk-grid-divider > [class*='uk-width-large-']:not(.uk-width-large-1-1):nth-child(n+2) { border-left-color: @block-secondary-border; }
+
+    }
+
+    .uk-grid-divider:empty { border-top-color: @block-secondary-border; }
+
+    // Icon
+    // ========================================================================
+
+    //
+    // Icon button
+    //
+
+    .uk-icon-button {
+        background: @block-secondary-icon-button-background;
+        color: @block-secondary-icon-button-color;
+    }
+
+    .uk-icon-button:hover,
+    .uk-icon-button:focus {
+        background-color: @block-secondary-icon-button-hover-background;
+        color: @block-secondary-icon-button-hover-color;
+    }
+
+    .uk-icon-button:active {
+        background-color: @block-secondary-icon-button-active-background;
+        color: @block-secondary-icon-button-active-color;
+    }
+
+    // Panel
+    // ========================================================================
+
+    // background color for uk-panel-teaser
+    .uk-panel-teaser { background: darken(@global-secondary-background, 1%); }
+
+    // uk-panel-header border
+    .uk-panel-header .uk-panel-title:after { border-color: @global-contrast-color; }
+
+    // Subnav
+    // ========================================================================
+
+    .uk-subnav > * > a {
+        color: @block-secondary-subnav-color;
+        text-decoration: none;
+    }
+
+    .uk-subnav > * > a:hover,
+    .uk-subnav > * > a:focus {
+        color: @block-secondary-subnav-hover-color;
+        text-decoration: @block-secondary-subnav-hover-text-decoration;
+    }
+
+    .uk-subnav > .uk-active > a { color: @block-secondary-subnav-active-color; }
+
+    //
+    // Subnav line
+    //
+
+    .uk-subnav-line > :nth-child(n+2):before { border-left-color: @block-secondary-subnav-line-border; }
+
+    //
+    // Subnav pill
+    //
+
+    .uk-subnav-pill > .uk-active > a { color: @block-secondary-subnav-pill-active-color; }
+
+    // Text
+    // ========================================================================
+
+    .uk-text-muted,
+    .uk-link-muted,
+    .uk-link-muted a { color: @block-secondary-text-muted-color !important; }
+    .uk-text-primary { color: @block-secondary-text-primary-color !important; }
+
+    // shortcodes
+
+    .tm-block-text {
+        background-color: darken(@global-secondary-background, 10%);
+    }
+
+}
+
+
+// Miscellaneous
+// ========================================================================
+
+.hook-block-misc() {
+
+    .uk-block-primary-light {
+        background-color: @global-primary-light-background;
+    }
+}

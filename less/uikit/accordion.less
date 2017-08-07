@@ -1,0 +1,154 @@
+// Copyright (C) arrowthemes, https://www.gnu.org/licenses/gpl.html GNU/GPL */
+
+//
+// Component: Accordion
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+
+@accordion-title-font-size:                     20px;
+@accordion-title-line-height:                   26px;
+
+@accordion-title-margin-bottom:                 round((@global-margin / 1.5));
+@accordion-title-padding-vertical:              round((@global-margin / 2.5));
+@accordion-title-padding-horizontal:            round((@global-margin / 1.5));
+
+@accordion-content-padding-horizontal:          @accordion-title-padding-horizontal;
+@accordion-content-padding-bottom:              @accordion-title-padding-horizontal;
+
+@accordion-title-background:                    @global-primary-light-background;
+@accordion-title-border-width:                  1px;
+@accordion-title-border:                        @global-light-border;
+
+
+// Component
+// ========================================================================
+
+.hook-accordion() {}
+
+
+// Modifier: `uk-accordion-title`
+// ========================================================================
+
+.hook-accordion-title() {
+  border: @accordion-title-border-width solid @accordion-title-border;
+}
+
+
+// Modifier: `uk-accordion-content`
+// ========================================================================
+
+.hook-accordion-content() {}
+
+
+// Miscellaneous
+// ========================================================================
+
+.hook-accordion-misc() {
+
+	.tm-accordion,
+	.tm-toggle{
+	    margin: 20px 0 10px;
+
+	    .uk-accordion-title {
+			background-color: @accordion-title-background;
+			padding: @global-margin @global-margin @global-margin 30px;
+			color: @global-color;
+			border-color: darken(@accordion-title-background, 5%);
+			margin: 20px 0 0;
+			border-radius: @global-border-radius;
+		    -webkit-transition: all ease-in-out 0.25s;
+		            transition: all ease-in-out 0.25s;
+
+			&.uk-active {
+				border-radius: @global-border-radius @global-border-radius 0 0;
+			    background-color: @global-primary-background;
+			    color: @global-contrast-color;
+			    border-color: darken(@global-primary-background, 3%);
+			    -webkit-transition: all ease-in-out 0.25s;
+		            	transition: all ease-in-out 0.25s;
+			}
+
+	        i.tm-toggle-button {
+	            margin: 0 5px 0 20px;
+	            font-style: normal;
+	            font-family: @global-font-icon;
+	            color: @global-contrast-color;
+	            background-color: @global-primary-background;
+	            width: 26px;
+	            height: 26px;
+	            border-radius: @global-border-radius;
+	            text-align:center;
+	            position: relative;
+	            margin-bottom: 10px;
+			    -webkit-transition: @global-transition;
+			  			transition: @global-transition;
+	
+		        &:before,
+		        &:after {
+		        	content: "";
+		        	position: absolute;
+		        	-webkit-transition: @global-transition;
+				  			transition: @global-transition;
+		        }
+
+		        &:before {
+		            background-color: @global-contrast-color;
+		            content: "";
+		            height: 3px;
+		            width: 15px;
+		            top: 11px;
+		            left: 5px;
+		        }
+
+		        &:after {
+		            background-color: @global-contrast-color;
+		            content: "";
+		            height: 15px;
+		            width: 3px;
+		            top: 5px;
+		            left: 11px;
+		            opacity: 1;
+		            -webkit-transform: rotate(0deg);
+	  						transform: rotate(0deg);
+		        }
+	        }
+
+	        &.uk-active i.tm-toggle-button:before {
+	            opacity: 0;
+	            -webkit-transform: rotate(90deg);
+						transform: rotate(90deg);
+	        }
+
+	        &.uk-active i.tm-toggle-button:after {
+				-webkit-transform: rotate(90deg);
+						transform: rotate(90deg);
+	        }
+	    }
+
+	    .uk-accordion-content {
+	        padding: @global-grid-gutter 45px;
+	        border: 1px solid darken(@accordion-title-background, 5%);
+	        border-width: 0 1px 1px;
+
+	        code {
+	            white-space: pre-wrap;
+	            color: @base-pre-color;
+	        }
+	    }
+	}
+
+	.tm-toggle-icon {
+	    position: relative;
+	    margin-right: 10px;
+	}
+
+	.tm-toggle-code .uk-accordion-content {
+	    background-color: @base-pre-background;
+	}
+
+}

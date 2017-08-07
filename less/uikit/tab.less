@@ -1,0 +1,77 @@
+// Copyright (C) arrowthemes, https://www.gnu.org/licenses/gpl.html GNU/GPL */
+
+//
+// Component: Tab
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@tab-border:                                    @global-primary-background;
+@tab-color:                                     @global-color;
+@tab-hover-background:                          @global-light-background;
+@tab-hover-color:                               @global-color;
+@tab-hover-border:                              @global-border;
+@tab-active-border:                             @global-border;
+@tab-active-background:                         @global-primary-background;
+@tab-active-color:                              @global-contrast-color;
+@tab-disabled-color:                            @global-muted-color;
+
+
+// Component
+// ========================================================================
+
+//
+// Items
+//
+
+.hook-tab() {
+	border-radius: 3px 3px 0 0;
+}
+
+// Hover
+.hook-tab-hover() {}
+
+// Active
+.hook-tab-active() {}
+
+// Disabled
+.hook-tab-disabled() {}
+
+
+// Miscellaneous
+// ========================================================================
+
+.hook-tab-misc() {
+
+	.uk-tab-top:before{
+		border-width: 2px;
+		bottom: -2px;
+	}
+
+	.uk-tab-right,
+	.uk-tab-left {
+		border-width: 2px;
+	}
+
+	.uk-tab-left > li > a {
+		border-radius: @global-border-radius 0 0 @global-border-radius;
+	}
+
+	.uk-tab-right > li > a {
+		border-radius: 0 @global-border-radius @global-border-radius 0;
+	}
+
+	.uk-tab-content {
+	    box-shadow: 0 1px 0 1px @global-primary-light-background;
+	    margin: 0 !important;
+	    padding: 40px !important;
+	    border-radius: 0 0 4px 4px;
+	}
+
+	.uk-tab-grid {
+		z-index: 1;
+	}
+}

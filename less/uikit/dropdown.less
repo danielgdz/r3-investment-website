@@ -1,0 +1,148 @@
+// Copyright (C) arrowthemes, https://www.gnu.org/licenses/gpl.html GNU/GPL */
+
+//
+// Component: Dropdown
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@dropdown-z-index:                              (@global-z-index + 20);
+@dropdown-background:                           @global-background;
+@dropdown-color:                                @global-color;
+@dropdown-padding:                              25px;
+@dropdown-width:                                250px;
+@dropdown-divider-border:                       @global-border;
+@dropdown-small-padding:                        15px;
+
+@dropdown-navbar-margin:                        0;
+@dropdown-navbar-background:                    @global-background;
+@dropdown-navbar-color:                         @global-color;
+@dropdown-animation:							uk-slide-top-fixed;
+
+@dropdown-box-shadow-size: 						@global-box-shadow-size;
+@dropdown-box-shadow: 							@global-box-shadow;
+@dropdown-navbar-animation:						@dropdown-animation;
+
+
+
+// Component
+// ========================================================================
+
+.hook-dropdown() {
+	box-shadow: inset -1px -1px 0 @global-darker-shadow, 
+				inset 1px 0 0 @global-darker-shadow, 
+				2px 2px 1px @global-dark-shadow;
+}
+
+// Modifier: `uk-dropdown-navbar`
+// ========================================================================
+
+.hook-dropdown-navbar() {
+
+	padding: 0;
+
+	.uk-nav-navbar ul a,
+	.uk-nav-navbar > li > a {
+		padding: 6px 18px;
+		font-size: @navbar-nav-font-size;
+		text-transform: @navbar-nav-text-transform;
+		letter-spacing: @navbar-nav-letter-spacing;
+	}
+
+	.uk-nav-header {
+		padding: 7px @dropdown-small-padding;
+	}
+
+	.uk-nav-navbar ul li a:hover,
+	.uk-nav-navbar > li > a:hover,
+    .uk-nav-navbar > li > a:focus,
+	.uk-nav-navbar > li.uk-active > a,
+	.uk-nav-navbar ul li.uk-active > a {
+		background-color: @theme-menuitem-hover-background;
+		color: @theme-menuitem-hover-color;
+		box-shadow: inset 0 -1px 0 @global-darker-shadow, 
+					inset 0 1px 0 rgba(255, 255, 255, 0.075);
+	}
+
+	.uk-nav-navbar ul li:first-child a:hover,
+	.uk-nav-navbar > li:first-child > a:hover,
+	.uk-nav-navbar > li:first-child > a:focus,
+	.uk-nav-navbar > li.uk-active:first-child > a,
+	.uk-nav-navbar ul li.uk-active:first-child > a {
+	    box-shadow: inset 0 -1px 0 @global-darker-shadow;
+	}
+}
+
+
+// Miscellaneous
+// ========================================================================
+
+.hook-dropdown-misc() {
+
+	@media (min-width: @breakpoint-medium) {
+
+	    .tm-navbar .uk-dropdown:not(.uk-dropdown-stack) > .uk-dropdown-grid {
+	        margin-left: 0;
+	        margin-right: 0;
+	    }
+
+	    .tm-navbar .uk-dropdown:not(.uk-dropdown-stack) > .uk-dropdown-grid > [class*='uk-width-'] {
+	        padding-left: 0;
+	        padding-right: 0;
+	    }
+	}
+
+	/* Nav in dropdown
+	 ========================================================================== */
+
+	.uk-dropdown .uk-nav { margin: 0; }
+
+	.tm-navbar {
+		.uk-dropdown {
+			display: block;
+			visibility: hidden;
+			
+			.uk-nav { margin: 0 }
+
+			li.uk-parent {
+				> ul { 
+					margin-left: -10px;
+					border-top: 1px solid @global-darker-shadow;
+		            box-shadow: inset -1px -1px 0 @global-darker-shadow, 
+		                        inset 1px 0 0 @global-darker-shadow, 
+		                        2px 2px 2px @global-dark-shadow;
+				}
+
+				> a:before {
+						color: @theme-menuitem-color;
+						font-family: @global-font-icon;
+						content: "\f105";
+						position: absolute;
+						right: 15px;
+						font-size: 18px;
+				}
+
+				&.uk-active > a:before,
+				&:hover > a:before {
+						color: @theme-menuitem-hover-color;
+				}
+			}
+		}
+
+		.uk-open > .uk-dropdown { visibility: visible; }
+		
+	}
+
+	/* button dropdown */
+	.uk-button-dropdown .uk-dropdown .uk-nav {
+		margin: 0 15px 0 0;
+	}
+
+	.tm-navbar:not(.uk-active) .uk-dropdown-width-4.uk-dropdown-flip {
+		right: -100px !important;
+		left: auto !important;
+	}
+}
