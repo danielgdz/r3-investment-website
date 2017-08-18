@@ -15228,6 +15228,7 @@ input[type=range]:active::-moz-range-thumb {
 }
 .tm-shop .tm-product {
   text-align: center;
+  border: 1px;
 }
 .tm-shop .tm-product-title {
   text-align: center;

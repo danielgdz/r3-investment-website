@@ -10,7 +10,9 @@
   <meta name="author" content="arrowthemes">
   <title>R3 Investment S.A.C.</title>
 
-  <!-- fav icon -->
+  <!-- vue -->
+  <script src="js/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.3.4/vue-resource.js"></script>
   <!-- css -->
   <link rel="stylesheet" href="css/plyr.css">
   <link rel="stylesheet" href="css/salmon/bootstrap.css">
@@ -19,7 +21,7 @@
 </head>
 
 <body id="tm-container">
-  <div class="tm-container">
+  <div id="app" class="tm-container">
 
     <!-- preloader -->
     <div class="tm-preload">
@@ -40,12 +42,12 @@
 
           <!-- logo -->
           <a class="tm-logo uk-hidden-small" href="index.html">
-            <img src="" width="180" height="50" alt="demo">
+            <img src="images/r3-investment/logo/white-logo.png" width="180px" height="50px">
           </a>
-
+  
           <!-- small logo -->
           <a class="tm-logo-small uk-visible-small" href="index.html">
-            <img src="" width="140" height="40" alt="demo">
+            <img src="images/r3-investment/logo/white-logo.png" width="140px" height="40px">
           </a>
 
           <!-- main menu -->
@@ -65,8 +67,8 @@
                         <div class="uk-grid uk-dropdown-grid">
                           <div class="uk-width-1-1">
                             <ul class="uk-nav uk-nav-navbar">
-                              <li><a href="#">Quienes somos</a></li>
-                              <li><a href="#">Nuestro equipo</a></li>
+                              <li><a href="company.html">Quiénes Somos</a></li>
+                              <li><a href="team.html">Nuestro equipo</a></li>
                             </ul>
                           </div>
                         </div>
@@ -79,11 +81,9 @@
                         <div class="uk-grid uk-dropdown-grid">
                           <div class="uk-width-1-1">
                             <ul class="uk-nav uk-nav-navbar">
-                              <li><a href="news-item-1.html">Rivera del duero</a></li>
-                              <li><a href="news-item-2.html">Cava</a></li>
-                              <li><a href="news-item-3.html">Penedés</a></li>
-                              <li><a href="news-item-4.html">Rueda</a></li>
-                              <li><a href="news-item-5.html">Priorato</a></li>
+                                <li v-for="warehouse in warehouses">
+                                    <a v-bind:href="'warehouse.html?warehouse_id='+ warehouse.id">{{ warehouse.name }}</a>
+                                </li>
                             </ul>
                           </div>
                         </div>
@@ -116,68 +116,7 @@
         </div>
       </div>
     </div>
-
-    <!-- headerbar -->
-    <div class="tm-headerbar-container">
-      <div class="uk-container uk-container-center">
-        <div class="tm-headerbar">
-          <div class="">
-            <div class="uk-grid" data-uk-grid-margin="">
-              <div class="uk-width-medium-1-4 uk-width-small-1-2">
-                <div class="uk-flex">
-                  <div class="tm-block-icon uk-icon-comments-o"></div>
-                  <div class="tm-block-content">
-                    <h3>Llámanos</h3>
-                    <p>+51 993 767 986​⁠​</p>
-                  </div>
-                </div>
-              </div>
-              <div class="uk-width-medium-1-4 uk-width-small-1-2">
-                <div class="uk-flex">
-                  <div class="tm-block-icon uk-icon-map-signs"></div>
-                  <div class="tm-block-content">
-                    <h3>Visítanos</h3>
-                    <p>Jr. Gozzoli Norte 609, Of 2B</p>
-                  </div>
-                </div>
-              </div>
-              <div class="uk-width-medium-1-4 uk-width-small-1-2">
-                <div class="uk-flex">
-                  <div class="tm-block-icon uk-icon-envelope-o"></div>
-                  <div class="tm-block-content">
-                    <h3>Escríbenos</h3>
-                    <p>contacto@r3-investment.pe</p>
-                  </div>
-                </div>
-              </div>
-              <div class="uk-width-medium-1-4 uk-width-small-1-2">
-                <div class="uk-flex">
-                  <div class="tm-block-icon uk-icon-clock-o"></div>
-                  <div class="tm-block-content">
-                    <h3>Horarios</h3>
-                    <p>8:00 am a 06:00 pm L-V</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- spotlight -->
-    <div class="tm-block-spotlight uk-block uk-block-primary" id="tm-spotlight">
-      <div class="uk-container uk-container-center">
-        <section class="tm-spotlight uk-grid" data-uk-grid-match="{target:'> div > .uk-panel'}">
-          <div class="uk-width-1-1">
-            <div class="uk-panel">
-              <h1 class="uk-h2 uk-margin-remove">Nuestros productos</h1>
-            </div>
-          </div>
-        </section>
-      </div>
-    </div>
-
+    
     <!-- breadcrumbs -->
     <div class="tm-breadcrumbs">
       <div class="uk-container uk-container-center">
@@ -203,7 +142,7 @@
                       <div class="tm-shop" itemscope itemtype="http://schema.org/ItemList" data-link="shop-grid.html">
                         <div class="uk-grid">
                           <div class="uk-width-medium-1-2">
-                          <p class="tm-shop-items-count">Mostrando total de 14 productos</p>
+                          <p class="tm-shop-items-count">Mostrando total de {{ products.length }} productos</p>
                           </div>
 
                           <div class="uk-width-medium-1-2 uk-text-right">
@@ -224,463 +163,42 @@
 
                         <div class="uk-grid uk-grid-width-small-1-2 uk-grid-width-medium-1-2 uk-grid-width-large-1-3" data-uk-grid-margin="">
                           
-                          <!-- FIRST LINE -->
-                          <!-- product item -->
-                          <div class="tm-product" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/Product">
-                            <div class="tm-product-img">
-                              <a href="shop-single-product-1.html">
-                                <img class="tm-shop-img-responsive" itemprop="image" src="images/r3-investment/products/vaquos_roble_list.png">  
-                              </a>
-                            </div>
-                            <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="tm-product-price-container">
-                              <div class="tm-sale-price"><a title="En boca, es suave, bien estructurado y ofrece un agradable equilibrio entre la fruta y las notas de crianza."  href="shop-single-product-1.html">Vaquos Roble</a></div>
-                            </div>
-                            <h2 itemprop="name" class="tm-product-title">
-                              <a itemprop="url" href="news-item-1.html" title="">RIBERA DEL DUERO</a>
-                            </h2>
-
-                            <div class="tm-product-rating" itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
-                              <meta itemprop="ratingValue" content="5.00">
-                              <meta itemprop="ratingCount" content="5">
-                              <ul class="tm-rating">
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                              </ul>
-                            </div>
-                          </div>
-                          <!-- product item -->
-                          <div class="tm-product" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/Product">
-                            <div class="tm-product-img">
-                              <a href="shop-single-product.html">
-                                <img class="tm-shop-img-responsive" itemprop="image" alt="" src="images/r3-investment/products/vaquos_crianza_list.png">  
-                              </a>
-                            </div>
-                            <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="tm-product-price-container">
-                              <div class="tm-sale-price"><a title="Se muestra pleno, de sabor amplio y carnoso. Excelente equilibrio entre taninos y acidez. Paso de boca amable y retrogusto de prolongada persistencia." href="shop-single-product.html">Vaquos Crianza</a></div>
-                            </div>
-                            <h2 itemprop="name" class="tm-product-title">
-                              <a itemprop="url" href="news-item-1.html" title="">RIBERA DEL DUERO</a>
-                            </h2>
-
-                            <div class="tm-product-rating" itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
-                              <meta itemprop="ratingValue" content="4.50">
-                              <meta itemprop="ratingCount" content="5">
-                              <ul class="tm-rating">
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star-half-o"></i></li>
-                              </ul>
+                          <!-- PRODUCTS LINE -->
+                          <div v-for="product in products" class="tm-product" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/Product">
+                            <div>
+                                <div class="tm-product-img">
+                                    <a v-bind:href="'product.html?product_id='+ product.id">
+                                      <img class="tm-shop-img-responsive" itemprop="image" alt="" v-bind:src="server+product.url_image">
+                                    </a>
+                                  </div>
+                                  <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="tm-product-price-container">
+                                    <div class="tm-sale-price">
+                                        <a v-bind:href="'product.html?product_id='+ product.id">
+                                          {{ product.name }}
+                                        </a>
+                                    </div>
+                                    <div class="tm-product-rating" itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
+                                      <ul class="tm-rating">
+                                        <li v-for="star in product.stars"><i class="uk-icon-star"></i></li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                  <h2 itemprop="name" class="tm-product-title">
+                                    <a v-bind:href="'warehouse.html?warehouse_id='+ product.warehouses_id">
+                                      {{ product.warehouse_name }}
+                                    </a>
+                                  </h2>
+                                  <h3 itemprop="name" class="tm-product-title">
+                                    {{ product.short_description }}
+                                  </h3>
+                                  <br>
                             </div>
                           </div>
-                          <!-- product item -->
-                          <div class="tm-product" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/Product">
-                            <div class="tm-product-img">
-                              <a href="shop-single-product.html">
-                                <img class="tm-shop-img-responsive" itemprop="image" alt="" src="images/r3-investment/products/vaquos_reserve_list.png">  
-                              </a>
+                          <!--
+                            <div class="uk-width-1-1">
+                              <ul class="uk-pagination" data-uk-pagination="{items:16, itemsOnPage:6}"></ul>
                             </div>
-                            <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="tm-product-price-container">
-                              <div class="tm-sale-price"><a title="Potente y equilibrado, de sensación carnosa y aterciopelada. Los taninos se hacen claramente perceptibles, proporcionando un conjunto elegante y muy agradable. Retrogusto largo e intenso." href="shop-single-product.html">Vaquos Reserva</a></div>
-                            </div>
-                            <h2 itemprop="name" class="tm-product-title">
-                              <a itemprop="url" href="news-item-1.html" title="">RIBERA DEL DUERO</a>
-                            </h2>
-
-                            <div class="tm-product-rating" itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
-                              <meta itemprop="ratingValue" content="4.50">
-                              <meta itemprop="ratingCount" content="5">
-                              <ul class="tm-rating">
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star-half-o"></i></li>
-                              </ul>
-                            </div>
-                          </div>
-
-                          <!-- SECOND LINE -->
-                          <!-- product item -->
-                          <div class="tm-product" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/Product">
-                            <div class="tm-product-img">
-                              <a href="shop-single-product.html">
-                                <img class="tm-shop-img-responsive" itemprop="image" alt="" src="http://www.pinord.com/wp-content/uploads/2014/09/dibon-brut-nature-reserva-71x212.png">  
-                              </a>
-                            </div>
-                            <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="tm-product-price-container">
-                              <div class="tm-sale-price"><a title="Suave y sedoso, su carbónico le da frescura y vivacidad, manteniendo su persistencia en boca durante largo tiempo." href="shop-single-product.html">Dibon Brut Reserva</a></div>
-                            </div>
-                            <h2 itemprop="name" class="tm-product-title">
-                              <a itemprop="url" href="news-item-2.html" title="">CAVA</a>
-                            </h2>
-
-                            <div class="tm-product-rating" itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
-                              <meta itemprop="ratingValue" content="5.00">
-                              <meta itemprop="ratingCount" content="5">
-                              <ul class="tm-rating">
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                              </ul>
-                            </div>
-                          </div>
-                          <!-- product item -->
-                          <div class="tm-product" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/Product">
-                            <div class="tm-product-img">
-                              <a href="shop-single-product.html">
-                                <img class="tm-shop-img-responsive" itemprop="image" alt="" src="http://www.pinord.com/wp-content/uploads/2014/09/160210_Dibon_Brut_Rose_01_Baja-71x212.png">  
-                              </a>
-                            </div>
-                            <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="tm-product-price-container">
-                              <div class="tm-sale-price"><a title="En boca es muy lleno con una sensación burbujeante espléndida que llena el paladar. También aparece la fruta roja si cabe más marcada que en la nariz. Con una persistencia larga." href="shop-single-product.html">Dibon Brut Rosado</a></div>
-                            </div>
-                            <h2 itemprop="name" class="tm-product-title">
-                              <a itemprop="url" href="news-item-2.html" title="">CAVA</a>
-                            </h2>
-
-                            <div class="tm-product-rating" itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
-                              <meta itemprop="ratingValue" content="3.50">
-                              <meta itemprop="ratingCount" content="5">
-                              <ul class="tm-rating">
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star-half-empty"></i></li>
-                                <li><i class="uk-icon-star-o"></i></li>
-                              </ul>
-                            </div>
-                          </div>
-                          <!-- product item -->
-                          <div class="tm-product" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/Product">
-                            <div class="tm-product-img">
-                              <a href="shop-single-product.html">
-                                <img class="tm-shop-img-responsive" itemprop="image" alt="" src="http://www.pinord.com/wp-content/uploads/2014/09/dibon-demi-sec-71x212.png">  
-                              </a>
-                            </div>
-                            <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="tm-product-price-container">
-                              <div class="tm-sale-price"><a title="El coupage de las tres variedades le da un agradable sabor, que con la adecuada cantidad de licor de expedición se transforma en un espléndido Cava." href="shop-single-product.html">Dibon Semi Seco</a></div>
-                            </div>
-                            <h2 itemprop="name" class="tm-product-title">
-                              <a itemprop="url" href="news-item-2.html" title="">CAVA</a>
-                            </h2>
-
-                            <div class="tm-product-rating" itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
-                              <meta itemprop="ratingValue" content="4.00">
-                              <meta itemprop="ratingCount" content="5">
-                              <ul class="tm-rating">
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star-o"></i></li>
-                              </ul>
-                            </div>
-                          </div>
-
-                          <!-- THIRD LINE -->
-                          <!-- product item -->
-                          <div class="tm-product" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/Product">
-                            <div class="tm-product-img">
-                              <a href="shop-single-product.html">
-                                <img class="tm-shop-img-responsive" itemprop="image" alt="" src="http://www.pinord.com/wp-content/uploads/2011/07/marrugat-brut-millesime_final-71x212.png">  
-                              </a>
-                            </div>
-                            <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="tm-product-price-container">
-                              <div class="tm-sale-price"><a title="Conserva aún gustos varietales, mezclados con los de crianza, haciendo un equilibrio perfecto. Es fino al paladar con una cierta acidez que lo rejuvenece, formando así un conjunto muy armónico. Su persistencia en boca es bastante larga." href="shop-single-product.html">Marrugat Brut Nature Millésime</a></div>
-                            </div>
-                            <h2 itemprop="name" class="tm-product-title">
-                              <a itemprop="url" href="news-item-2.html" title="">CAVA</a>
-                            </h2>
-
-                            <div class="tm-product-rating" itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
-                              <meta itemprop="ratingValue" content="5.00">
-                              <meta itemprop="ratingCount" content="5">
-                              <ul class="tm-rating">
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                              </ul>
-                            </div>
-                          </div>
-                          <!-- product item -->
-                          <div class="tm-product" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/Product">
-                            <div class="tm-product-img">
-                              <a href="shop-single-product.html">
-                                <img class="tm-shop-img-responsive" itemprop="image" alt="" src="http://www.pinord.com/wp-content/uploads/2011/07/GAUDIANA-BLANCO-Botella1-71x212.png">  
-                              </a>
-                            </div>
-                            <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="tm-product-price-container">
-                              <div class="tm-sale-price"><a title="En boca tiene una entrada muy agradable, nos aporta frescura y aromas de la fruta blanca y cítrica que notamos en nariz. Tiene una buena complejidad en boca , bien equilibrado y con un pos gusto largo." href="shop-single-product.html">Sparkling Gaudiana Blanco</a></div>
-                            </div>
-                            <h2 itemprop="name" class="tm-product-title">
-                              <a itemprop="url" href="news-item-3.html" title="">PENEDÉS</a>
-                            </h2>
-
-                            <div class="tm-product-rating" itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
-                              <meta itemprop="ratingValue" content="3.50">
-                              <meta itemprop="ratingCount" content="5">
-                              <ul class="tm-rating">
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star-half-empty"></i></li>
-                                <li><i class="uk-icon-star-o"></i></li>
-                              </ul>
-                            </div>
-                          </div>
-                          <!-- product item -->
-                          <div class="tm-product" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/Product">
-                            <div class="tm-product-img">
-                              <a href="shop-single-product.html">
-                                <img class="tm-shop-img-responsive" itemprop="image" alt="" src="http://www.pinord.com/wp-content/uploads/2011/07/GAUDIANA-ROSE-Botella1-71x212.png">  
-                              </a>
-                            </div>
-                            <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="tm-product-price-container">
-                              <div class="tm-sale-price"><a title="De paladar es franco, seco con cuerpo y agradable." href="shop-single-product.html">Sparkling Gaudiana Rosado</a></div>
-                            </div>
-                            <h2 itemprop="name" class="tm-product-title">
-                              <a itemprop="url" href="news-item-3.html" title="">PENEDÉS</a>
-                            </h2>
-
-                            <div class="tm-product-rating" itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
-                              <meta itemprop="ratingValue" content="4.00">
-                              <meta itemprop="ratingCount" content="5">
-                              <ul class="tm-rating">
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star-o"></i></li>
-                              </ul>
-                            </div>
-                          </div>
-
-                          <!-- FOURTH LINE -->
-                          <!-- product item -->
-                          <div class="tm-product" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/Product">
-                            <div class="tm-product-img">
-                              <a href="shop-single-product.html">
-                                <img class="tm-shop-img-responsive" itemprop="image" alt="" src="http://www.pinord.com/wp-content/uploads/2011/06/5033_clos_t_10_blanc_f_sa-71x212.png">  
-                              </a>
-                            </div>
-                            <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="tm-product-price-container">
-                              <div class="tm-sale-price"><a title="Es pleno, complejo y equilibrado al paladar. Un vino en el que predominan las frutas rojas ligeramente ahumadas y francamente agradables.Está en su óptimo momento de consumo, pudiendo conservarse todavía unos años." href="shop-single-product.html">Clos de Torribas Blanco</a></div>
-                            </div>
-                            <h2 itemprop="name" class="tm-product-title">
-                              <a itemprop="url" href="news-item-3.html" title="">PENEDÉS</a>
-                            </h2>
-
-                            <div class="tm-product-rating" itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
-                              <meta itemprop="ratingValue" content="5.00">
-                              <meta itemprop="ratingCount" content="5">
-                              <ul class="tm-rating">
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                              </ul>
-                            </div>
-                          </div>
-                          <!-- product item -->
-                          <div class="tm-product" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/Product">
-                            <div class="tm-product-img">
-                              <a href="shop-single-product.html">
-                                <img class="tm-shop-img-responsive" itemprop="image" alt="" src="http://www.pinord.com/wp-content/uploads/2011/06/Pinord-Clos-de-Torribas-Rosado-71x212.png">  
-                              </a>
-                            </div>
-                            <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="tm-product-price-container">
-                              <div class="tm-sale-price"><a title="Vino ligero, pero con carácter. La uva Tempranillo le confiere una personalidad propia que nos deja un paladar suave con un equilibrado frescor." href="shop-single-product.html">Clos de Torribas Rosado</a></div>
-                            </div>
-                            <h2 itemprop="name" class="tm-product-title">
-                              <a itemprop="url" href="news-item-3.html" title="">PENEDÉS</a>
-                            </h2>
-
-                            <div class="tm-product-rating" itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
-                              <meta itemprop="ratingValue" content="3.50">
-                              <meta itemprop="ratingCount" content="5">
-                              <ul class="tm-rating">
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star-half-empty"></i></li>
-                                <li><i class="uk-icon-star-o"></i></li>
-                              </ul>
-                            </div>
-                          </div>
-                          <!-- product item -->
-                          <div class="tm-product" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/Product">
-                            <div class="tm-product-img">
-                              <a href="shop-single-product.html">
-                                <img class="tm-shop-img-responsive" itemprop="image" alt="" src="http://www.pinord.com/wp-content/uploads/2011/07/chateldon-reserva-opti-71x212.png">  
-                              </a>
-                            </div>
-                            <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="tm-product-price-container">
-                              <div class="tm-sale-price"><a title="De paladar suave, destacan los gustos obtenidos del envejecimiento en perfecto equilibrio con el cuerpo. Con un posgusto largo y un cuerpo intenso nos deja un agradable sabor en boca." href="shop-single-product.html">Chateldon Reserva</a></div>
-                            </div>
-                            <h2 itemprop="name" class="tm-product-title">
-                              <a itemprop="url" href="news-item-3.html" title="">PENEDÉS</a>
-                            </h2>
-
-                            <div class="tm-product-rating" itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
-                              <meta itemprop="ratingValue" content="4.00">
-                              <meta itemprop="ratingCount" content="5">
-                              <ul class="tm-rating">
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star-o"></i></li>
-                              </ul>
-                            </div>
-                          </div>
-
-                          <!-- FIFTH LINE -->
-                          <!-- product item -->
-                          <div class="tm-product" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/Product">
-                            <div class="tm-product-img">
-                              <a href="shop-single-product.html">
-                                <img class="tm-shop-img-responsive" itemprop="image" alt="" src="http://www.pinord.com/wp-content/uploads/2011/07/chateldres-okweb-71x212.png">  
-                              </a>
-                            </div>
-                            <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="tm-product-price-container">
-                              <div class="tm-sale-price"><a title="En boca es un vino muy equilibrado. Su madurez y los taninos, que le dan unas sensaciones aterciopeladas muy agradables, le mantienen con un posgusto muy largo." href="shop-single-product.html">Chateldon Gran Reserva</a></div>
-                            </div>
-                            <h2 itemprop="name" class="tm-product-title">
-                              <a itemprop="url" href="news-item-3.html" title="">PENEDÉS</a>
-                            </h2>
-
-                            <div class="tm-product-rating" itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
-                              <meta itemprop="ratingValue" content="5.00">
-                              <meta itemprop="ratingCount" content="5">
-                              <ul class="tm-rating">
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                              </ul>
-                            </div>
-                          </div>
-                          <!-- product item -->
-                          <div class="tm-product" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/Product">
-                            <div class="tm-product-img">
-                              <a href="shop-single-product.html">
-                                <img class="tm-shop-img-responsive" itemprop="image" alt="" src="http://www.pinord.com/wp-content/uploads/2011/07/Verdejo-71x212.png">  
-                              </a>
-                            </div>
-                            <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="tm-product-price-container">
-                              <div class="tm-sale-price"><a title="En boca es seco y sabroso, con tonos cítricos y ofrece un equilibrio perfecto entre su grado alcohólico y su acidez." href="shop-single-product.html">Vaquos Verdejo </a></div>
-                            </div>
-                            <h2 itemprop="name" class="tm-product-title">
-                              <a itemprop="url" href="news-item-4.html" title="">RUEDA</a>
-                            </h2>
-
-                            <div class="tm-product-rating" itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
-                              <meta itemprop="ratingValue" content="3.50">
-                              <meta itemprop="ratingCount" content="5">
-                              <ul class="tm-rating">
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star-half-empty"></i></li>
-                                <li><i class="uk-icon-star-o"></i></li>
-                              </ul>
-                            </div>
-                          </div>
-                          <!-- product item -->
-                          <div class="tm-product" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/Product">
-                            <div class="tm-product-img">
-                              <a href="shop-single-product.html">
-                                <img class="tm-shop-img-responsive" itemprop="image" alt="" src="http://www.pinord.com/wp-content/uploads/2011/07/clos_del_mas_2015_senseany-71x212.png">  
-                              </a>
-                            </div>
-                            <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="tm-product-price-container">
-                              <div class="tm-sale-price"><a title="Destacan los gustos de frutas, en buen equilibrio con el cuerpo del vino. Tiene una gran concentración de taninos suaves que le transfieren un agradable paso de boca." href="shop-single-product.html">Clos del Mas</a></div>
-                            </div>
-                            <h2 itemprop="name" class="tm-product-title">
-                              <a itemprop="url" href="news-item-5.html" title="">PRIORATO</a>
-                            </h2>
-
-                            <div class="tm-product-rating" itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
-                              <meta itemprop="ratingValue" content="4.00">
-                              <meta itemprop="ratingCount" content="5">
-                              <ul class="tm-rating">
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star-o"></i></li>
-                              </ul>
-                            </div>
-                          </div>
-
-                          <!-- SIXTH LINE -->
-                          <!-- product item -->
-                          <div class="tm-product" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/Product">
-                            <div class="tm-product-img">
-                              <a href="shop-single-product.html">
-                                <img class="tm-shop-img-responsive" itemprop="image" alt="" src="http://www.pinord.com/wp-content/uploads/2011/07/+7-okweb-71x212.png">  
-                              </a>
-                            </div>
-                            <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="tm-product-price-container">
-                              <div class="tm-sale-price"><a title="Es pleno y complejo, suave y equilibrado al paladar. Un vino en el cual predominan las frutas rojas ligeramente ahumadas." href="shop-single-product.html">+7</a></div>
-                            </div>
-                            <h2 itemprop="name" class="tm-product-title">
-                              <a itemprop="url" href="news-item-5.html" title="">PRIORATO</a>
-                            </h2>
-
-                            <div class="tm-product-rating" itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
-                              <meta itemprop="ratingValue" content="5.00">
-                              <meta itemprop="ratingCount" content="5">
-                              <ul class="tm-rating">
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                              </ul>
-                            </div>
-                          </div>
-                          <!-- product item -->
-                          <div class="tm-product" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/Product">
-                            <div class="tm-product-img">
-                              <a href="shop-single-product.html">
-                                <img class="tm-shop-img-responsive" itemprop="image" alt="" src="http://www.pinord.com/wp-content/uploads/2011/07/Balcons-okweb-71x212.png">  
-                              </a>
-                            </div>
-                            <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="tm-product-price-container">
-                              <div class="tm-sale-price"><a title="Se presenta pleno y vigoroso, con taninos persistentes y toques afrutados silvestres." href="shop-single-product.html">Balcons </a></div>
-                            </div>
-                            <h2 itemprop="name" class="tm-product-title">
-                              <a itemprop="url" href="news-item-5.html" title="">PRIORATO</a>
-                            </h2>
-
-                            <div class="tm-product-rating" itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
-                              <meta itemprop="ratingValue" content="3.50">
-                              <meta itemprop="ratingCount" content="5">
-                              <ul class="tm-rating">
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star"></i></li>
-                                <li><i class="uk-icon-star-half-empty"></i></li>
-                                <li><i class="uk-icon-star-o"></i></li>
-                              </ul>
-                            </div>
-                          </div>
-
-                          <div class="uk-width-1-1">
-                            <ul class="uk-pagination" data-uk-pagination="{items:16, itemsOnPage:6}"></ul>
-                          </div>
+                          -->
                         </div>
                       </div>
                     </div>
@@ -695,11 +213,8 @@
             <div class="uk-panel uk-panel-box tm-panel-box-primary-light">
               <h3 class="uk-panel-title">Bodegas</h3>
               <ul class="uk-list list-icons" data-uk-nav="{}">
-                <li><i class="uk-icon-angle-right"></i><a href="news-item-1.html"> RIBERA DEL DUERO</a></li>
-                <li><i class="uk-icon-angle-right"></i><a href="news-item-2.html"> CAVA</a></li>
-                <li><i class="uk-icon-angle-right"></i><a href="news-item-3.html"> PENEDÉS</a></li>
-                <li><i class="uk-icon-angle-right"></i><a href="news-item-4.html"> RUEDA</a></li>
-                <li><i class="uk-icon-angle-right"></i><a href="news-item-5.html"> PRIORATO</a></li>
+                <li v-on:click="changeWarehouseBy(0)"><i class="uk-icon-angle-right"></i><a href="#!">Todas</a></li>
+                <li v-on:click="changeWarehouseBy(warehouse.id)" v-for="warehouse in warehouses"><i class="uk-icon-angle-right"></i><a href="#!">{{ warehouse.name }}</a></li>
               </ul>
             </div>
 
@@ -708,7 +223,7 @@
               <h3 class="uk-panel-title">Top 5</h3>
               <ul class="tm-product-top-rated">
                 <li>
-                  <a href="shop-single-product-1.html" title="Vaquos Roble">
+                  <a href="product-1.html" title="Vaquos Roble">
                     <img class="tm-product-top-rated-img" alt="hoodie_02_black_front" src="images/r3-investment/products/vaquos_roble_list.png">
                     <span class="product-title">Vaquos Roble</span>
                   </a>
@@ -722,7 +237,7 @@
                 </li>
                 
                 <li>
-                  <a href="shop-single-product.html" title="Dibron Brut Reserva">
+                  <a href="product.html" title="Dibron Brut Reserva">
                     <img class="tm-product-top-rated-img" alt="hoodie_02_black_front" src="http://www.pinord.com/wp-content/uploads/2014/09/dibon-brut-nature-reserva-71x212.png"> 
                     <span class="product-title">Dibron Brut Reserva</span>
                   </a>
@@ -736,7 +251,7 @@
                 </li>
 
                 <li>
-                  <a href="shop-single-product.html" title="Marrugat Brut Nature Millésime">
+                  <a href="product.html" title="Marrugat Brut Nature Millésime">
                     <img class="tm-product-top-rated-img" alt="hoodie_02_black_front" src="http://www.pinord.com/wp-content/uploads/2011/07/marrugat-brut-millesime_final-71x212.png"> 
                     <span class="product-title">Marrugat Brut Nature Millésime</span>
                   </a>
@@ -750,7 +265,7 @@
                 </li>
 
                 <li>
-                  <a href="shop-single-product.html" title="Clos de Torribas Blanco">
+                  <a href="product.html" title="Clos de Torribas Blanco">
                     <img class="tm-product-top-rated-img" alt="hoodie_02_black_front" src="http://www.pinord.com/wp-content/uploads/2011/06/5033_clos_t_10_blanc_f_sa-71x212.png"> 
                     <span class="product-title">Clos de Torribas Blanco</span>
                   </a>
@@ -764,7 +279,7 @@
                 </li>
 
                 <li>
-                  <a href="shop-single-product.html" title="Chateldon Gran Reserva">
+                  <a href="product.html" title="Chateldon Gran Reserva">
                     <img class="tm-product-top-rated-img" alt="hoodie_02_black_front" src="http://www.pinord.com/wp-content/uploads/2011/07/chateldres-okweb-71x212.png"> 
                     <span class="product-title">Chateldon Gran Reserva</span>
                   </a>
@@ -802,65 +317,62 @@
       </div>
     </div>
 
+    <!-- headerbar -->
+    <div class="tm-headerbar-container">
+      <div class="uk-container uk-container-center">
+        <div class="tm-headerbar">
+          <div class="">
+            <div class="uk-grid" data-uk-grid-margin="">
+              <div class="uk-width-medium-1-4 uk-width-small-1-2">
+                <div class="uk-flex">
+                  <div class="tm-block-icon uk-icon-comments-o"></div>
+                  <div class="tm-block-content">
+                    <h3>Llámanos</h3>
+                    <p>+51 363-7729</p>
+                  </div>
+                </div>
+              </div>
+              <div class="uk-width-medium-1-4 uk-width-small-1-2">
+                <div class="uk-flex">
+                  <div class="tm-block-icon uk-icon-map-signs"></div>
+                  <div class="tm-block-content">
+                    <h3>Visítanos</h3>
+                    <p>Gozzoli Norte N° 207, Oficina 203</p>
+                  </div>
+                </div>
+              </div>
+              <div class="uk-width-medium-1-4 uk-width-small-1-2">
+                <div class="uk-flex">
+                  <div class="tm-block-icon uk-icon-envelope-o"></div>
+                  <div class="tm-block-content">
+                    <h3>Escríbenos</h3>
+                    <p>contacto@r3-investment.pe</p>
+                  </div>
+                </div>
+              </div>
+              <div class="uk-width-medium-1-4 uk-width-small-1-2">
+                <div class="uk-flex">
+                  <div class="tm-block-icon uk-icon-clock-o"></div>
+                  <div class="tm-block-content">
+                    <h3>Horarios</h3>
+                    <p>08:00 a 18:00 L-V, 08:00 a 13:00 S</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- bottom-c -->
     <div class="tm-block-bottom-c uk-block uk-block-primary" id="tm-bottom-c">
       <div class="uk-container uk-container-center">
         <section class="tm-bottom-c uk-grid" data-uk-grid-margin="" data-uk-grid-match="{target:'> div > .uk-panel'}">
           <div class="uk-width-1-1">
-            <div class="uk-panel">
-              <div class="uk-grid" data-uk-grid-margin="">
-                <div class="uk-width-medium-1-2">
-                  <h3 class="uk-margin-small-top">Contáctenos de forma directa</h3>
-                </div>
-                <div class="uk-width-medium-1-2">
-
-                  <!-- subscription form -->
-                  <form id="subscribe_form" class="uk-form">
-                  <div id="alert-msg-subscribe" class="alert-msg"></div>
-                  <div class="uk-grid uk-grid-small" data-uk-grid-margin>
-
-                    <div class="uk-width-medium-2-5">
-                      <div><input type="text" placeholder="Nombre" name="subscribe-name" class="uk-width-1-1" required="required"></div>
-                    </div>
-
-                    <div class="uk-width-medium-2-5">
-                      <div><input type="email" placeholder="Email" name="subscribe-email" class="uk-width-1-1" required="required"></div>
-                    </div>
-
-                    <div class="uk-width-medium-1-5">
-                      <div class="form-group uk-margin-remove">
-                        <button id="subscribe_button" type="submit" class="uk-button uk-button-default">Contactar</button>
-                      </div>
-                    </div>
-
-                  </div>
-                </form>
-                </div>
+              <div class="uk-panel">
+                <p>Copyright &copy; R3 Investment Website by <a href="https://github.com/danielgdz" target="_blank">DGDZ</a></p>
               </div>
-            </div>
-          </div>
-        </section>
-      </div>
-    </div>
-
-    <!-- bottom-e -->
-    <div class="tm-block-bottom-e uk-block uk-block-secondary" id="tm-bottom-e">
-      <div class="uk-container uk-container-center">
-        <section class="tm-bottom-e uk-grid" data-uk-grid-margin="" data-uk-grid-match="{target:'> div > .uk-panel'}">
-          <div class="uk-width-1-1 uk-width-medium-1-2">
-            <div class="uk-panel">
-              <p>Copyright &copy; R3 Investment Website by <a href="https://github.com/danielgdz" target="_blank">DGDZ</a></p>
-            </div>
-          </div>
-          <div class="uk-width-1-1 uk-width-medium-1-2">
-            <div class="uk-panel">
-              <div class="uk-text-right">
-                <a class="uk-icon-button uk-icon-facebook" href="#" target="_blank"></a> 
-                <a class="uk-icon-button uk-icon-twitter" href="#" target="_blank"></a> 
-                <a class="uk-icon-button uk-icon-dribbble" href="#" target="_blank"></a> 
-                <a class="uk-icon-button uk-icon-behance" href="#" target="_blank"></a>
-              </div>
-            </div>
           </div>
         </section>
       </div>
@@ -872,124 +384,93 @@
         <ul class="uk-nav uk-nav-parent-icon uk-nav-offcanvas" data-uk-nav>
 
           <!-- Home menu -->
-          <li class="uk-parent"><a href="index.html">Inicio</a>
-          </li>
-
-          <!-- Theme menu -->
-          <li class="uk-parent"><a href="#">Theme</a>
-            <ul class="uk-nav-sub">
-              <li><a href="module-layouts.html">Module Layouts</a></li>
-              <li class="uk-parent"><a href="#">Header Layouts</a>
-                <ul>
-                  <li><a href="header-default.html">Header Default</a></li>
-                  <li><a href="header-center.html">Header Center</a></li>
-                  <li><a href="header-right.html">Header Right</a></li>
-                  <li><a href="header-full-right.html">Header Full Fight</a></li>
-                </ul>
-              </li>
-              <li><a href="uikit-elements.html">UIkit Elements</a></li>
-              <li><a href="color-styles.html">Color Styles</a></li>
-              <li><a href="rtl-language-support.html">RTL Language Support</a></li>
-            </ul>
-          </li>
-
-          <!-- Elements menu -->
-          <li class="uk-parent"><a href="#">Elements</a>
-            <ul class="uk-nav-sub">
-              <li><a href="elements-typography.html">Typography</a></li>
-              <li><a href="elements-column-blocks.html">Column Blocks</a></li>
-              <li><a href="elements-buttons.html">Buttons</a></li>
-              <li><a href="elements-dropdowns.html">Dropdowns</a></li>
-              <li><a href="elements-alerts.html">Alerts &amp; Badges</a></li>
-              <li><a href="elements-panels.html">Panels</a></li>
-              <li><a href="elements-accordion.html">Accordion &amp; Toggles</a></li>
-              <li><a href="elements-tooltips.html">Tooltips</a></li>
-              <li><a href="elements-progress.html">Progress Bar</a></li>
-              <li><a href="elements-tabs.html">Tabs</a></li>
-              <li><a href="elements-tables.html">Tables</a></li>
-              <li><a href="elements-images.html">Images</a></li>
-              <li><a href="elements-modal-box.html">Modal Box</a></li>
-              <li><a href="elements-lightbox.html">Lightbox</a></li>
-              <li><a href="elements-slideshow.html">Slideshow</a></li>
-              <li><a href="elements-dynamic-grid.html">Dynamic Grid</a></li>
-              <li><a href="elements-animation.html">Animation</a></li>
-              <li><a href="elements-counter.html">Counter</a></li>
-              <li><a href="elements-slider.html">Slider</a></li>
-              <li><a href="elements-parallax.html">Parallax</a></li>
-              <li><a href="elements-icons.html">Icons</a></li>
-              <li><a href="elements-cards.html">Cards</a></li>
-              <li><a href="elements-audio-video.html">Audio/Video</a></li>
-              <li><a href="elements-timeline.html">Timeline</a></li>            
-            </ul>
+          <li class="uk-active"><a href="index.html">Inicio</a>
           </li>
 
           <!-- Pages menu -->
-          <li class="uk-parent"><a href="#">Pages</a>
+          <li class="uk-parent"><a href="#">La empresa</a>
             <ul class="uk-nav-sub">
-              <li><a href="about-us.html">About Us</a></li>
-              <li class="uk-parent"><a href="#">Our Team</a>
-                <ul>
-                  <li><a href="our-team-basic.html">Our team - Basic</a></li>
-                  <li><a href="our-team-extended.html">Our team - Extended</a></li>
-                  <li><a href="our-team-filter.html">Our team - Filter</a></li>
-                </ul>
-              </li>
-              <li><a href="our-services.html">Our Services</a></li>
-              <li><a href="our-pricing.html">Our Pricing</a></li>
-              <li><a href="our-rates.html">Our Rates</a></li>
-              <li class="uk-parent"><a href="#">Gallery</a>
-                <ul>
-                  <li class="uk-parent"><a href="#">Gallery Layout</a>
-                    <ul>
-                      <li><a href="2-column-gallery.html">2 Column Gallery</a></li>
-                      <li><a href="3-column-gallery.html">3 Column Gallery</a></li>
-                      <li><a href="4-column-gallery.html">4 Column Gallery</a></li>
-                    </ul>
-                  </li>
-                  <li class="uk-parent"><a href="#">Grid Layout</a>
-                    <ul>
-                      <li><a href="2-column-grid.html">2 Column Grid</a></li>
-                      <li><a href="3-column-grid.html">3 Column Grid</a></li>
-                      <li><a href="4-column-grid.html">4 Column Grid</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="portfolio-blocks.html">Portfolio Blocks</a></li>
-                  <li><a href="masonry-layout.html">Masonry Layout</a></li>
-                  <li><a href="no-margin-layout.html">No margin Layout</a></li>
-                  <li class="uk-parent"><a href="#">Single Portfolio</a>
-                    <ul>
-                      <li><a href="half-image.html">Half Image</a></li>
-                      <li><a href="half-image-slider.html">Half Image Slider</a></li>
-                      <li><a href="full-image.html">Full Image</a></li>
-                      <li><a href="full-image-slider.html">Full Image Slider</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
-              <li><a href="testimonials.html">Testimonials</a></li>
-              <li><a href="faqs.html">FAQs</a></li>
-              <li><a href="404.html">404 Error page</a></li>
-              <li><a href="contact-us.html">Contact Us</a></li>
+              <li><a href="company.html">Quiénes Somos</a></li>
+              <li><a href="team.html">Nuestro equipo</a></li>
             </ul>
           </li>
 
           <!-- News menu -->
           <li class="uk-parent"><a href="#">Bodegas</a>
-            <ul class="uk-nav-sub">
-                <li><a href="news-item-1.html">Rivera del duero</a></li>
-                <li><a href="news-item-2.html">Cava</a></li>
-                <li><a href="news-item-3.html">Penedés</a></li>
-                <li><a href="news-item-4.html">Rueda</a></li>
-                <li><a href="news-item-5.html">Priorato</a></li>
+            <ul class="uk-nav uk-nav-navbar">
+              <li v-for="warehouse in warehouses">
+                <a v-bind:href="'warehouse.html?warehouse_id='+ warehouse.id">{{ warehouse.name }}</a>
+              </li>
             </ul>
           </li>
           <!-- Shop menu -->
-          <li class="uk-parent uk-active"><a href="shop-grid.html">Productos</a>
+          <li><a href="shop-grid.html">Productos</a>
           </li>
         </ul>
       </div>
     </div>
+    
   </div>
+
+
+  <!-- vue2 -->
+  <script type="text/javascript">
+    new Vue({
+        el: "#app",
+        data: {
+            name: "Daniel",
+            server: "http://52.15.217.203:8080",
+            warehouses: [],
+            products: [],
+            productsComplete: [],
+            warehouses_id: 0
+        },
+        mounted: function() {
+            this.loadInfoWarehouses();
+            this.loadInfoProducts();
+        },
+        methods: {
+            loadInfoWarehouses: function(){
+                this.$http.get(this.server + '/api/warehouses-simple-list')
+                    .then(response => {
+                        this.warehouses = response.data;
+                    });
+            },
+            loadInfoProducts: function(){
+                this.$http.get(this.server + '/api/wines')
+                    .then(response => {
+                        this.products = response.data;
+                        this.productsComplete = response.data;
+                    });
+            },
+            changeWarehouse: function(){
+                this.products = this.productsComplete;
+                if (this.warehouses_id !== 0) {    
+                    var products_ = [];
+                    this.products.forEach(function(element) {
+                        if (element.warehouses_id === this.warehouses_id) {
+                            products_.push(element);
+                        }
+                    }, this);
+                    this.products = products_;
+                }
+            },
+            changeWarehouseBy: function(id){
+              this.warehouses_id = id;
+              this.products = this.productsComplete;
+                if (this.warehouses_id !== 0) {    
+                    var products_ = [];
+                    this.products.forEach(function(element) {
+                        if (element.warehouses_id === this.warehouses_id) {
+                            products_.push(element);
+                        }
+                    }, this);
+                    this.products = products_;
+                }
+            }
+        }
+    });
+</script>
 
   <!-- jquery -->
   <script src="js/jquery/jquery.min.js" type="text/javascript"></script>
