@@ -137,19 +137,19 @@
           <div class="tm-main uk-width-medium-3-4">
             <main id="tm-content" class="tm-content">    
               <ul class="uk-tab uk-tab-grid uk-tab-top" data-uk-tab="{connect:'#warehouse_descr', animation: 'fade'}">
-                <li class="uk-active">
+                <li v-if="description[0] !== ''" class="uk-active">
                   <a href="#">La zona</a>
                 </li>
-                <li>
+                <li v-if="description[1] !== ''" >
                   <a href="#">La viña</a>
                 </li>
-                <li>
+                <li v-if="description[2] !== ''" >
                   <a href="#">La bodega</a>
                 </li>
               </ul>
               <ul id="warehouse_descr" class="uk-switcher uk-margin uk-tab-content">
                 <!-- full description -->
-                <li>
+                <li v-if="description[0] !== ''" >
                   <article class="uk-article tm-article" data-permalink="news-item.html">
                     <div class="tm-article-wrapper">
                       <div class="tm-article-featured-image"> <img class="uk-border-rounded" v-bind:src="images[0]" width="851" height="355"> </div>
@@ -162,7 +162,7 @@
                     </div>
                   </article>
                 </li>
-                <li>
+                <li v-if="description[1] !== ''" >
                   <article class="uk-article tm-article" data-permalink="news-item.html">
                     <div class="tm-article-wrapper">
                       <div class="tm-article-featured-image"> <img class="uk-border-rounded" v-bind:src="images[1]" width="851" height="355"> </div>
@@ -175,7 +175,7 @@
                     </div>
                   </article>
                 </li>
-                <li>
+                <li v-if="description[2] !== ''" >
                   <article class="uk-article tm-article" data-permalink="news-item.html">
                     <div class="tm-article-wrapper">
                       <div class="tm-article-featured-image"> <img class="uk-border-rounded" v-bind:src="images[2]" width="851" height="355"> </div>

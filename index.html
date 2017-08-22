@@ -41,12 +41,12 @@
 
           <!-- logo -->
           <a class="tm-logo uk-hidden-small" href="index.html">
-            <img src="images/r3-investment/logo/white-logo.png" width="180px" height="50px">
+            <img src="images/r3-investment/logo/white-logo.png" width="250px">
           </a>
 
           <!-- small logo -->
           <a class="tm-logo-small uk-visible-small" href="index.html">
-            <img src="images/r3-investment/logo/white-logo.png" width="140px" height="40px">
+            <img src="images/r3-investment/logo/white-logo.png" width="140px">
           </a>
 
           <!-- main menu -->
@@ -75,13 +75,17 @@
                     </li>
 
                     <!-- News menu -->
-                    <li class="uk-parent" data-uk-dropdown><a href="">Bodegas</a>
+                    <li class="uk-parent" data-uk-dropdown><a href="#">Bodegas</a>
                       <div class="uk-dropdown uk-dropdown-navbar uk-dropdown-width-1">
                         <div class="uk-grid uk-dropdown-grid">
                           <div class="uk-width-1-1">
                             <ul class="uk-nav uk-nav-navbar">
-                              <li v-for="warehouse in warehouses">
-                                  <a v-bind:href="'warehouse.html?warehouse_id='+ warehouse.id">{{ warehouse.name }}</a>
+                              <li class="uk-parent"><a href="#">Pinord</a>
+                                <ul class="uk-nav-sub">
+                                  <li v-for="warehouse in warehouses">
+                                      <a v-bind:href="'warehouse.html?warehouse_id='+ warehouse.id">{{ warehouse.name }}</a>
+                                  </li>
+                                </ul>
                               </li>
                             </ul>
                           </div>
