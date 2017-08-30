@@ -61,13 +61,13 @@
                     </li>
                     
                     <!-- Pages menu -->
-                    <li class="uk-parent" data-uk-dropdown><a href="#">La empresa</a>
+                    <li class="uk-parent" data-uk-dropdown><a href="#">La Empresa</a>
                       <div class="uk-dropdown uk-dropdown-navbar uk-dropdown-width-1">
                         <div class="uk-grid uk-dropdown-grid">
                           <div class="uk-width-1-1">
                             <ul class="uk-nav uk-nav-navbar">
                               <li><a href="company.html">Quiénes Somos</a></li>
-                              <li><a href="team.html">Nuestro equipo</a></li>
+                              <li><a href="team.html">Nuestro Equipo</a></li>
                             </ul>
                           </div>
                         </div>
@@ -108,9 +108,8 @@
             <div class="uk-navbar-content tm-navbar-more uk-visible-large uk-margin-left" data-uk-dropdown="{mode:'click'}">
               <a class="uk-link-reset"></a>
               <div class="uk-dropdown uk-dropdown-flip">
-                <form action="#" class="uk-search" data-uk-search="" id="search-page" method="post" name="search-box">
-                  <input class="uk-search-field" name="searchword" placeholder="Buscar..." type="text"> <input name="task" type="hidden" value="search"> 
-                  <input name="option" type="hidden" value=""> <input name="Itemid" type="hidden" value="502">
+                <form action="shop-grid.html" class="uk-search" data-uk-search="" id="search-page" method="get" name="search-box">
+                  <input class="uk-search-field" name="searchword" placeholder="Buscar..." type="text">
                 </form>
               </div>
             </div>
@@ -252,18 +251,22 @@
           </li>
 
           <!-- Pages menu -->
-          <li class="uk-parent"><a href="#">La empresa</a>
+          <li class="uk-parent"><a href="#">La Empresa</a>
             <ul class="uk-nav-sub">
               <li><a href="company.html">Quiénes Somos</a></li>
-              <li><a href="team.html">Nuestro equipo</a></li>
+              <li><a href="team.html">Nuestro Equipo</a></li>
             </ul>
           </li>
 
           <!-- News menu -->
           <li class="uk-parent"><a href="#">Bodegas</a>
             <ul class="uk-nav uk-nav-navbar">
-              <li v-for="warehouse in warehouses">
-                <a v-bind:href="'warehouse.html?warehouse_id='+ warehouse.id">{{ warehouse.name }}</a>
+              <li class="uk-parent"><a href="#">Pinord</a>
+                <ul class="uk-nav-sub">
+                  <li v-for="warehouse in warehouses">
+                      <a v-bind:href="'warehouse.html?warehouse_id='+ warehouse.id">{{ warehouse.name }}</a>
+                  </li>
+                </ul>
               </li>
             </ul>
           </li>

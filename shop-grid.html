@@ -22,7 +22,6 @@
 
 <body id="tm-container">
   <div id="app" class="tm-container">
-
     <!-- preloader -->
     <div class="tm-preload">
       <div class="spinner"></div>
@@ -42,12 +41,12 @@
 
           <!-- logo -->
           <a class="tm-logo uk-hidden-small" href="index.html">
-            <img src="images/r3-investment/logo/white-logo.png" width="180px" height="50px">
+            <img src="images/r3-investment/logo/white-logo.png" width="250px">
           </a>
-  
+
           <!-- small logo -->
           <a class="tm-logo-small uk-visible-small" href="index.html">
-            <img src="images/r3-investment/logo/white-logo.png" width="140px" height="40px">
+            <img src="images/r3-investment/logo/white-logo.png" width="140px">
           </a>
 
           <!-- main menu -->
@@ -58,17 +57,17 @@
                   <ul class="uk-navbar-nav uk-hidden-small">
 
                     <!-- home menu  -->
-                    <li data-uk-dropdown><a href="index.html">Inicio</a>
+                    <li class="uk-parent uk-active" data-uk-dropdown><a href="index.html">Inicio</a>
                     </li>
                     
                     <!-- Pages menu -->
-                    <li class="uk-parent" data-uk-dropdown><a href="#">La empresa</a>
+                    <li class="uk-parent" data-uk-dropdown><a href="#">La Empresa</a>
                       <div class="uk-dropdown uk-dropdown-navbar uk-dropdown-width-1">
                         <div class="uk-grid uk-dropdown-grid">
                           <div class="uk-width-1-1">
                             <ul class="uk-nav uk-nav-navbar">
                               <li><a href="company.html">Quiénes Somos</a></li>
-                              <li><a href="team.html">Nuestro equipo</a></li>
+                              <li><a href="team.html">Nuestro Equipo</a></li>
                             </ul>
                           </div>
                         </div>
@@ -76,14 +75,18 @@
                     </li>
 
                     <!-- News menu -->
-                    <li class="uk-parent" data-uk-dropdown><a href="">Bodegas</a>
+                    <li class="uk-parent" data-uk-dropdown><a href="#">Bodegas</a>
                       <div class="uk-dropdown uk-dropdown-navbar uk-dropdown-width-1">
                         <div class="uk-grid uk-dropdown-grid">
                           <div class="uk-width-1-1">
                             <ul class="uk-nav uk-nav-navbar">
-                                <li v-for="warehouse in warehouses">
-                                    <a v-bind:href="'warehouse.html?warehouse_id='+ warehouse.id">{{ warehouse.name }}</a>
-                                </li>
+                              <li class="uk-parent"><a href="#">Pinord</a>
+                                <ul class="uk-nav-sub">
+                                  <li v-for="warehouse in warehouses">
+                                      <a v-bind:href="'warehouse.html?warehouse_id='+ warehouse.id">{{ warehouse.name }}</a>
+                                  </li>
+                                </ul>
+                              </li>
                             </ul>
                           </div>
                         </div>
@@ -91,7 +94,7 @@
                     </li>
 
                     <!-- Shop menu -->
-                    <li class="uk-parent uk-active" data-uk-dropdown><a href="shop-grid.html">Productos</a>
+                    <li class="uk-parent" data-uk-dropdown><a href="shop-grid.html">Productos</a>
                     </li>
                   </ul>
                 </div>
@@ -105,9 +108,8 @@
             <div class="uk-navbar-content tm-navbar-more uk-visible-large uk-margin-left" data-uk-dropdown="{mode:'click'}">
               <a class="uk-link-reset"></a>
               <div class="uk-dropdown uk-dropdown-flip">
-                <form action="#" class="uk-search" data-uk-search="" id="search-page" method="post" name="search-box">
-                  <input class="uk-search-field" name="searchword" placeholder="Buscar..." type="text"> <input name="task" type="hidden" value="search"> 
-                  <input name="option" type="hidden" value=""> <input name="Itemid" type="hidden" value="502">
+                <form action="shop-grid.html" class="uk-search" data-uk-search="" id="search-page" method="get" name="search-box">
+                  <input class="uk-search-field" name="searchword" placeholder="Buscar..." type="text">
                 </form>
               </div>
             </div>
@@ -146,7 +148,7 @@
                           </div>
 
                           <div class="uk-width-medium-1-2 uk-text-right">
-                          <form class="tm-shop-ordering" method="get">
+                          <!-- <form class="tm-shop-ordering" method="get">
                             <select name="orderby" class="orderby">
                                     <option value="menu_order" selected="selected">Filtros</option>
                                     <option value="price-desc">Por bodégas</option>
@@ -154,9 +156,9 @@
                                     <option value="rating">Mejor rating</option>
                                     <option value="date">Los más nuevos</option>
                                     <option value="price">Menor a mayor precio</option>
-                                </select>
+                            </select>
                             <input type="hidden" name="post_type" value="product">
-                          </form>
+                          </form> -->
                           </div>
 
                         </div>
@@ -211,7 +213,7 @@
 
             <!-- product categories -->
             <div class="uk-panel uk-panel-box tm-panel-box-primary-light">
-              <h3 class="uk-panel-title">Bodegas</h3>
+              <h3 class="uk-panel-title">Denominaciones de Origen</h3>
               <ul class="uk-list list-icons" data-uk-nav="{}">
                 <li v-on:click="changeWarehouseBy(0)"><i class="uk-icon-angle-right"></i><a href="#!">Todas</a></li>
                 <li v-on:click="changeWarehouseBy(warehouse.id)" v-for="warehouse in warehouses"><i class="uk-icon-angle-right"></i><a href="#!">{{ warehouse.name }}</a></li>
@@ -388,18 +390,22 @@
           </li>
 
           <!-- Pages menu -->
-          <li class="uk-parent"><a href="#">La empresa</a>
+          <li class="uk-parent"><a href="#">La Empresa</a>
             <ul class="uk-nav-sub">
               <li><a href="company.html">Quiénes Somos</a></li>
-              <li><a href="team.html">Nuestro equipo</a></li>
+              <li><a href="team.html">Nuestro Equipo</a></li>
             </ul>
           </li>
 
           <!-- News menu -->
           <li class="uk-parent"><a href="#">Bodegas</a>
             <ul class="uk-nav uk-nav-navbar">
-              <li v-for="warehouse in warehouses">
-                <a v-bind:href="'warehouse.html?warehouse_id='+ warehouse.id">{{ warehouse.name }}</a>
+              <li class="uk-parent"><a href="#">Pinord</a>
+                <ul class="uk-nav-sub">
+                  <li v-for="warehouse in warehouses">
+                      <a v-bind:href="'warehouse.html?warehouse_id='+ warehouse.id">{{ warehouse.name }}</a>
+                  </li>
+                </ul>
               </li>
             </ul>
           </li>

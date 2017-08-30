@@ -22,7 +22,6 @@
 
 <body id="tm-container">
   <div id="app" class="tm-container">
-
     <!-- preloader -->
     <div class="tm-preload">
       <div class="spinner"></div>
@@ -42,76 +41,79 @@
 
           <!-- logo -->
           <a class="tm-logo uk-hidden-small" href="index.html">
-            <img src="images/r3-investment/logo/white-logo.png" width="180px" height="50px">
+            <img src="images/r3-investment/logo/white-logo.png" width="250px">
           </a>
-  
+
           <!-- small logo -->
           <a class="tm-logo-small uk-visible-small" href="index.html">
-            <img src="images/r3-investment/logo/white-logo.png" width="140px" height="40px">
+            <img src="images/r3-investment/logo/white-logo.png" width="140px">
           </a>
 
           <!-- main menu -->
           <div class="uk-flex uk-flex-right">
-              <div class="uk-hidden-small">
-                <nav class="tm-navbar uk-navbar tm-navbar-transparent">
-                  <div class="uk-container uk-container-center">
-                    <ul class="uk-navbar-nav uk-hidden-small">
-  
-                      <!-- home menu  -->
-                      <li data-uk-dropdown><a href="index.html">Inicio</a>
-                      </li>
-                      
-                      <!-- Pages menu -->
-                      <li class="uk-parent" data-uk-dropdown><a href="#">La empresa</a>
-                        <div class="uk-dropdown uk-dropdown-navbar uk-dropdown-width-1">
-                          <div class="uk-grid uk-dropdown-grid">
-                            <div class="uk-width-1-1">
-                              <ul class="uk-nav uk-nav-navbar">
-                                <li><a href="company.html">Quiénes Somos</a></li>
-                                <li><a href="team.html">Nuestro equipo</a></li>
-                              </ul>
-                            </div>
+            <div class="uk-hidden-small">
+              <nav class="tm-navbar uk-navbar tm-navbar-transparent">
+                <div class="uk-container uk-container-center">
+                  <ul class="uk-navbar-nav uk-hidden-small">
+
+                    <!-- home menu  -->
+                    <li class="uk-parent uk-active" data-uk-dropdown><a href="index.html">Inicio</a>
+                    </li>
+                    
+                    <!-- Pages menu -->
+                    <li class="uk-parent" data-uk-dropdown><a href="#">La Empresa</a>
+                      <div class="uk-dropdown uk-dropdown-navbar uk-dropdown-width-1">
+                        <div class="uk-grid uk-dropdown-grid">
+                          <div class="uk-width-1-1">
+                            <ul class="uk-nav uk-nav-navbar">
+                              <li><a href="company.html">Quiénes Somos</a></li>
+                              <li><a href="team.html">Nuestro Equipo</a></li>
+                            </ul>
                           </div>
                         </div>
-                      </li>
-  
-                      <!-- News menu -->
-                      <li class="uk-parent" data-uk-dropdown><a href="">Bodegas</a>
-                        <div class="uk-dropdown uk-dropdown-navbar uk-dropdown-width-1">
-                          <div class="uk-grid uk-dropdown-grid">
-                            <div class="uk-width-1-1">
-                              <ul class="uk-nav uk-nav-navbar">
+                      </div>
+                    </li>
+
+                    <!-- News menu -->
+                    <li class="uk-parent" data-uk-dropdown><a href="#">Bodegas</a>
+                      <div class="uk-dropdown uk-dropdown-navbar uk-dropdown-width-1">
+                        <div class="uk-grid uk-dropdown-grid">
+                          <div class="uk-width-1-1">
+                            <ul class="uk-nav uk-nav-navbar">
+                              <li class="uk-parent"><a href="#">Pinord</a>
+                                <ul class="uk-nav-sub">
                                   <li v-for="warehouse in warehouses">
                                       <a v-bind:href="'warehouse.html?warehouse_id='+ warehouse.id">{{ warehouse.name }}</a>
                                   </li>
-                              </ul>
-                            </div>
+                                </ul>
+                              </li>
+                            </ul>
                           </div>
                         </div>
-                      </li>
-  
-                      <!-- Shop menu -->
-                      <li class="uk-parent uk-active" data-uk-dropdown><a href="shop-grid.html">Productos</a>
-                      </li>
-                    </ul>
-                  </div>
-                </nav>
-              </div>
-    
-              <!-- offcanvas nav icon -->
-              <a href="#offcanvas" class="uk-navbar-toggle uk-visible-small" data-uk-offcanvas></a>
-  
-              <!-- search button -->
-              <div class="uk-navbar-content tm-navbar-more uk-visible-large uk-margin-left" data-uk-dropdown="{mode:'click'}">
-                <a class="uk-link-reset"></a>
-                <div class="uk-dropdown uk-dropdown-flip">
-                  <form action="#" class="uk-search" data-uk-search="" id="search-page" method="post" name="search-box">
-                    <input class="uk-search-field" name="searchword" placeholder="Buscar..." type="text"> <input name="task" type="hidden" value="search"> 
-                    <input name="option" type="hidden" value=""> <input name="Itemid" type="hidden" value="502">
-                  </form>
+                      </div>
+                    </li>
+
+                    <!-- Shop menu -->
+                    <li class="uk-parent" data-uk-dropdown><a href="shop-grid.html">Productos</a>
+                    </li>
+                  </ul>
                 </div>
+              </nav>
+            </div>
+  
+            <!-- offcanvas nav icon -->
+            <a href="#offcanvas" class="uk-navbar-toggle uk-visible-small" data-uk-offcanvas></a>
+
+            <!-- search button -->
+            <div class="uk-navbar-content tm-navbar-more uk-visible-large uk-margin-left" data-uk-dropdown="{mode:'click'}">
+              <a class="uk-link-reset"></a>
+              <div class="uk-dropdown uk-dropdown-flip">
+                <form action="shop-grid.html" class="uk-search" data-uk-search="" id="search-page" method="get" name="search-box">
+                  <input class="uk-search-field" name="searchword" placeholder="Buscar..." type="text">
+                </form>
               </div>
             </div>
+          </div>
 
         </div>
       </div>
@@ -185,7 +187,7 @@
                                       <ul class="tm-rating">
                                           <li v-for="star in product.stars"><i class="uk-icon-star"></i></li>
                                       </ul>
-                                      <a target="_blank" v-bind:href="server+product.url_pdf"> Descargar PDF </a>
+                                      <a target="_blank" v-bind:href="product.url_pdf"> Descargar PDF </a>
                                       <br>
                                       <br>
                                       <textarea class="form-control" style="background:white; border:white; resize: none; text-align:center;" rows="10" readonly>{{ product.tech_details }}</textarea>
@@ -278,18 +280,22 @@
           </li>
 
           <!-- Pages menu -->
-          <li class="uk-parent"><a href="#">La empresa</a>
+          <li class="uk-parent"><a href="#">La Empresa</a>
             <ul class="uk-nav-sub">
               <li><a href="company.html">Quiénes Somos</a></li>
-              <li><a href="team.html">Nuestro equipo</a></li>
+              <li><a href="team.html">Nuestro Equipo</a></li>
             </ul>
           </li>
 
           <!-- News menu -->
           <li class="uk-parent"><a href="#">Bodegas</a>
             <ul class="uk-nav uk-nav-navbar">
-              <li v-for="warehouse in warehouses">
-                <a v-bind:href="'warehouse.html?warehouse_id='+ warehouse.id">{{ warehouse.name }}</a>
+              <li class="uk-parent"><a href="#">Pinord</a>
+                <ul class="uk-nav-sub">
+                  <li v-for="warehouse in warehouses">
+                      <a v-bind:href="'warehouse.html?warehouse_id='+ warehouse.id">{{ warehouse.name }}</a>
+                  </li>
+                </ul>
               </li>
             </ul>
           </li>

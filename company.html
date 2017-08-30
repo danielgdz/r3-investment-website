@@ -22,7 +22,6 @@
 
 <body id="tm-container">
   <div id="app" class="tm-container">
-
     <!-- preloader -->
     <div class="tm-preload">
       <div class="spinner"></div>
@@ -44,7 +43,7 @@
           <a class="tm-logo uk-hidden-small" href="index.html">
             <img src="images/r3-investment/logo/white-logo.png" width="250px">
           </a>
-  
+
           <!-- small logo -->
           <a class="tm-logo-small uk-visible-small" href="index.html">
             <img src="images/r3-investment/logo/white-logo.png" width="140px">
@@ -52,66 +51,69 @@
 
           <!-- main menu -->
           <div class="uk-flex uk-flex-right">
-              <div class="uk-hidden-small">
-                <nav class="tm-navbar uk-navbar tm-navbar-transparent">
-                  <div class="uk-container uk-container-center">
-                    <ul class="uk-navbar-nav uk-hidden-small">
-  
-                      <!-- home menu  -->
-                      <li data-uk-dropdown><a href="index.html">Inicio</a>
-                      </li>
-                      
-                      <!-- Pages menu -->
-                      <li class="uk-parent" data-uk-dropdown><a href="#">La empresa</a>
-                        <div class="uk-dropdown uk-dropdown-navbar uk-dropdown-width-1">
-                          <div class="uk-grid uk-dropdown-grid">
-                            <div class="uk-width-1-1">
-                              <ul class="uk-nav uk-nav-navbar">
-                                <li><a href="company.html">Quiénes Somos</a></li>
-                                <li><a href="team.html">Nuestro equipo</a></li>
-                              </ul>
-                            </div>
+            <div class="uk-hidden-small">
+              <nav class="tm-navbar uk-navbar tm-navbar-transparent">
+                <div class="uk-container uk-container-center">
+                  <ul class="uk-navbar-nav uk-hidden-small">
+
+                    <!-- home menu  -->
+                    <li class="uk-parent uk-active" data-uk-dropdown><a href="index.html">Inicio</a>
+                    </li>
+                    
+                    <!-- Pages menu -->
+                    <li class="uk-parent" data-uk-dropdown><a href="#">La Empresa</a>
+                      <div class="uk-dropdown uk-dropdown-navbar uk-dropdown-width-1">
+                        <div class="uk-grid uk-dropdown-grid">
+                          <div class="uk-width-1-1">
+                            <ul class="uk-nav uk-nav-navbar">
+                              <li><a href="company.html">Quiénes Somos</a></li>
+                              <li><a href="team.html">Nuestro Equipo</a></li>
+                            </ul>
                           </div>
                         </div>
-                      </li>
-  
-                      <!-- News menu -->
-                      <li class="uk-parent" data-uk-dropdown><a href="">Bodegas</a>
-                        <div class="uk-dropdown uk-dropdown-navbar uk-dropdown-width-1">
-                          <div class="uk-grid uk-dropdown-grid">
-                            <div class="uk-width-1-1">
-                              <ul class="uk-nav uk-nav-navbar">
+                      </div>
+                    </li>
+
+                    <!-- News menu -->
+                    <li class="uk-parent" data-uk-dropdown><a href="#">Bodegas</a>
+                      <div class="uk-dropdown uk-dropdown-navbar uk-dropdown-width-1">
+                        <div class="uk-grid uk-dropdown-grid">
+                          <div class="uk-width-1-1">
+                            <ul class="uk-nav uk-nav-navbar">
+                              <li class="uk-parent"><a href="#">Pinord</a>
+                                <ul class="uk-nav-sub">
                                   <li v-for="warehouse in warehouses">
                                       <a v-bind:href="'warehouse.html?warehouse_id='+ warehouse.id">{{ warehouse.name }}</a>
                                   </li>
-                              </ul>
-                            </div>
+                                </ul>
+                              </li>
+                            </ul>
                           </div>
                         </div>
-                      </li>
-  
-                      <!-- Shop menu -->
-                      <li class="uk-parent uk-active" data-uk-dropdown><a href="shop-grid.html">Productos</a>
-                      </li>
-                    </ul>
-                  </div>
-                </nav>
-              </div>
-    
-              <!-- offcanvas nav icon -->
-              <a href="#offcanvas" class="uk-navbar-toggle uk-visible-small" data-uk-offcanvas></a>
-  
-              <!-- search button -->
-              <div class="uk-navbar-content tm-navbar-more uk-visible-large uk-margin-left" data-uk-dropdown="{mode:'click'}">
-                <a class="uk-link-reset"></a>
-                <div class="uk-dropdown uk-dropdown-flip">
-                  <form action="#" class="uk-search" data-uk-search="" id="search-page" method="post" name="search-box">
-                    <input class="uk-search-field" name="searchword" placeholder="Buscar..." type="text"> <input name="task" type="hidden" value="search"> 
-                    <input name="option" type="hidden" value=""> <input name="Itemid" type="hidden" value="502">
-                  </form>
+                      </div>
+                    </li>
+
+                    <!-- Shop menu -->
+                    <li class="uk-parent" data-uk-dropdown><a href="shop-grid.html">Productos</a>
+                    </li>
+                  </ul>
                 </div>
+              </nav>
+            </div>
+  
+            <!-- offcanvas nav icon -->
+            <a href="#offcanvas" class="uk-navbar-toggle uk-visible-small" data-uk-offcanvas></a>
+
+            <!-- search button -->
+            <div class="uk-navbar-content tm-navbar-more uk-visible-large uk-margin-left" data-uk-dropdown="{mode:'click'}">
+              <a class="uk-link-reset"></a>
+              <div class="uk-dropdown uk-dropdown-flip">
+                <form action="shop-grid.html" class="uk-search" data-uk-search="" id="search-page" method="get" name="search-box">
+                  <input class="uk-search-field" name="searchword" placeholder="Buscar..." type="text">
+                </form>
               </div>
             </div>
+          </div>
 
         </div>
       </div>
@@ -137,56 +139,33 @@
             <main id="tm-content" class="tm-content">
                 <article class="uk-article tm-article" data-permalink="news-item.html">
                     <div class="tm-article-wrapper">
-                    <div class="tm-article-featured-image"> <img class="uk-border-rounded" src="" width="851" height="355"> </div>
                         <div class="tm-article-content uk-margin-large-bottom uk-margin-top-remove">
                             <!-- article -->
                             <div class="tm-article">
                                 <h2>Nuestra firma</h2>
-                                <p>Somos una empresa formada por profesionales de alto nivel competitivo, cuyos 
-                                valores han sido construidos sobre la base de principios éticos, la calidad total y el
-                                compromiso de hacer nuestros los objetivos de las bodegas y empresas que representamos.
-                                Nuestras oficinas se encuentran ubicadas en el Distrito de San Borja, Provincia de Lima,
-                                Departamento de Lima, muy cerca a las oficinas de nuestros principales clientes.</p>
-                            </div>
-                            <br>
-                            <div class="tm-article" style="text-align:right;">
-                                <h2>Por qué nos eligen para ser representantes de las principales marcas del mundo en el mercado peruano</h2>
-                                <p> <strong>1. Amplio dominio comercial del mercado:</strong><br> En nuestros clientes, grandes o
-                                        pequeños, encontrarán excelentes relatos y buenas experiencias del trabajo
-                                        que hacemos para ellos. Nuestro compromiso con las empresas que
-                                        representamos es tan grande que nos sentimos socios de nuestros clientes, de
-                                        modo que forjamos relaciones comerciales en base a un crecimiento sostenible
-                                        y responsable a lo largo del tiempo.
-                                        La calidad total y el alto nivel de satisfacción son los pilares de nuestro
-                                        accionar, gracias a lo cual tenemos las mejores relaciones comerciales en el ON
-                                        TRADE (HORECA) y OFF TRADE (Canal Moderno y Canal Tradicional). 
-                                        <br>                                        
-                                    <strong>2. Experiencia en el manejo de marcas: </strong><br> Las piezas claves de nuestro equipo son
-                                        los responsables de haber desarrollado las estrategias de Comerciales y de
-                                        Marketing de las principales bodegas que se comercializan en Perú, con lo cual
-                                        se encuentra asegurada la distribución, el posicionamiento y las proyecciones
-                                        de ventas a lo largo del tiempo.
-                                        Sumado a ello, estamos convencidos que bajo nuestra dirección empresarial y
-                                        con la calidad de profesionales que conforman nuestro equipo podemos
-                                        alcanzar los volúmenes esperados por nuestros proveedores.
-                                        <br>
-                                        
-                                    <strong>3. Cuidado de la marca:</strong> <br> Si bien aplicamos estrategias de mercadotecnia para
-                                        asegurar el cumplimiento de los volúmenes pactados en la negociación anual
-                                        (acciones agresivas en los supermercados, campañas de precio/volumen en los
-                                        distribuidores y mayoristas), cada acción realizada la hacemos tomando en
-                                        consideración la generación de valor, y ejercemos actividades de soporte en
-                                        beneficio de la imagen de la Bodega (participación en las principales ferias
-                                        como Expovino de Cencosud, Destinos Al Sabor de Supermercados Peruanos,
-                                        Wine Fest Alta Gama de Distribuidora Almendáriz, Luxury del Banco de Crédito
-                                        del Perú, actividades de prensa, visitas y lanzamientos en las principales
-                                        provincias del país, entre otras). Ello debido a que somos conscientes del
-                                        cuidado que las Bodegas ejercen en cada etapa del proceso productivo hasta
-                                        llegar al producto final. Sabemos que detrás de cada botella existe una
-                                        tradición, una filosofía de trabajo, un sinnúmero de anhelos y expectativas de
-                                        cada agricultor y operario de la planta que se suman a los sueños
-                                        empresariales, por lo que nos comprometemos a otorgarle a cada producto
-                                        que representamos una impecable distinción en el mercado peruano.</p>
+                                <p>Somos una empresa formada por profesionales de alto nivel competitivo, cuyos valores han sido construidos sobre la base de principios éticos, la calidad total y el compromiso de hacer nuestros los objetivos de las bodegas y empresas que representamos.</p>
+                                <h2>Ventajas competitivas</h2>
+                                <ul>
+                                  <li>
+                                    <p>
+                                      <strong>1. Amplio dominio comercial del mercado:</strong><br>
+                                      En nuestros clientes, grandes o pequeños, encontrarán excelentes relatos y buenas experiencias del trabajo que hacemos para ellos. La calidad total y el alto nivel de satisfacción son los pilares de nuestro accionar, gracias a lo cual tenemos las mejores relaciones comerciales en el On Trade y Off Trade. <br>
+                                    </p>
+                                  </li>
+                                  <li>
+                                    <p>
+                                      <strong>2. Experiencia en el manejo de marcas:</strong><br>
+                                      Las piezas claves de nuestro equipo son los responsables de haber desarrollado las estrategias de Comerciales y de Marketing de las principales bodegas que se comercializan en Perú, con lo cual se encuentra asegurada la distribución, el posicionamiento y las proyecciones de ventas a lo largo del tiempo. <br>
+                                    </p>
+                                  </li>
+                                  <li>
+                                    <p>
+                                      <strong>3. Cuidado de la marca:</strong><br>
+                                      Si bien aplicamos estrategias de mercadotecnia para asegurar el cumplimiento de los volúmenes pactados en la negociación anual, cada acción realizada la hacemos tomando en consideración la generación de valor y ejercemos actividades de soporte en beneficio de la imagen de la Bodega.
+                                    </p>
+                                  </li>
+                                </ul>
+                                
                             </div>
                         </div>
                     </div>
@@ -268,18 +247,22 @@
             </li>
   
             <!-- Pages menu -->
-            <li class="uk-parent"><a href="#">La empresa</a>
+            <li class="uk-parent"><a href="#">La Empresa</a>
               <ul class="uk-nav-sub">
                 <li><a href="company.html">Quiénes Somos</a></li>
-                <li><a href="team.html">Nuestro equipo</a></li>
+                <li><a href="team.html">Nuestro Equipo</a></li>
               </ul>
             </li>
   
             <!-- News menu -->
             <li class="uk-parent"><a href="#">Bodegas</a>
               <ul class="uk-nav uk-nav-navbar">
-                <li v-for="warehouse in warehouses">
-                  <a v-bind:href="'warehouse.html?warehouse_id='+ warehouse.id">{{ warehouse.name }}</a>
+                <li class="uk-parent"><a href="#">Pinord</a>
+                  <ul class="uk-nav-sub">
+                    <li v-for="warehouse in warehouses">
+                        <a v-bind:href="'warehouse.html?warehouse_id='+ warehouse.id">{{ warehouse.name }}</a>
+                    </li>
+                  </ul>
                 </li>
               </ul>
             </li>
