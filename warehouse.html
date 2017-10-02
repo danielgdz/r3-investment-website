@@ -41,7 +41,7 @@
 
           <!-- logo -->
           <a class="tm-logo uk-hidden-small" href="index.html">
-            <img src="images/r3-investment/logo/white-logo.png" width="250px">
+            <img src="images/r3-investment/logo/white-logo.png" width="300px">
           </a>
 
           <!-- small logo -->
@@ -139,32 +139,32 @@
           <div class="tm-main uk-width-medium-3-4">
             <main id="tm-content" class="tm-content">    
               <ul class="uk-tab uk-tab-grid uk-tab-top" data-uk-tab="{connect:'#warehouse_descr', animation: 'fade'}">
-                <li v-if="description[0] !== ''" class="uk-active">
-                  <a href="#">La zona</a>
+                <li v-show="description[0] !== ''">
+                  <a id="la_zona" href="#">La zona</a>
                 </li>
-                <li v-if="description[1] !== ''" >
-                  <a href="#">La viña</a>
+                <li v-show="description[1] !== ''" >
+                  <a id="la_vina" href="#">La viña</a>
                 </li>
-                <li v-if="description[2] !== ''" >
-                  <a href="#">La bodega</a>
+                <li v-show="description[2] !== ''" >
+                  <a id="la_bodega" href="#">La bodega</a>
                 </li>
               </ul>
               <ul id="warehouse_descr" class="uk-switcher uk-margin uk-tab-content">
                 <!-- full description -->
-                <li v-if="description[0] !== ''" >
+                <li v-show="description[0] !== ''" >
                   <article class="uk-article tm-article" data-permalink="news-item.html">
                     <div class="tm-article-wrapper">
                       <div class="tm-article-featured-image"> <img class="uk-border-rounded" v-bind:src="images[0]" width="851" height="355"> </div>
                       <div class="tm-article-content uk-margin-large-bottom uk-margin-top-remove">
                         <!-- article -->
                         <div class="tm-article">
-                            <p>{{ description[0] }}</p>
+                            <p>@{{ description[0] }}</p>
                         </div>
                       </div>
                     </div>
                   </article>
                 </li>
-                <li v-if="description[1] !== ''" >
+                <li v-show="description[1] !== ''" >
                   <article class="uk-article tm-article" data-permalink="news-item.html">
                     <div class="tm-article-wrapper">
                       <div class="tm-article-featured-image"> <img class="uk-border-rounded" v-bind:src="images[1]" width="851" height="355"> </div>
@@ -177,7 +177,7 @@
                     </div>
                   </article>
                 </li>
-                <li v-if="description[2] !== ''" >
+                <li v-show="description[2] !== ''" >
                   <article class="uk-article tm-article" data-permalink="news-item.html">
                     <div class="tm-article-wrapper">
                       <div class="tm-article-featured-image"> <img class="uk-border-rounded" v-bind:src="images[2]" width="851" height="355"> </div>
@@ -191,77 +191,6 @@
                   </article>
                 </li>
               </ul>
-              <!--
-                <h3 class="uk-module-title">Comentarios (3)</h3>
-                <ul class="uk-comment-list">
-                  <li>
-                    <article class="uk-comment">
-                      <header class="uk-comment-header">
-                        <img alt="" class="uk-comment-avatar" height="50" src="images/demo/uikit/uikit_avatar.svg" width="50">
-                        <h4 class="uk-comment-title">Autor</h4>
-                        <p class="uk-comment-meta">Hace 12 días</p>
-                      </header>
-                      <div class="uk-comment-body">
-                        Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi.
-                      </div>
-                    </article>
-                  </li>
-                  <li>
-                    <article class="uk-comment">
-                      <header class="uk-comment-header">
-                        <img alt="" class="uk-comment-avatar" height="50" src="images/demo/uikit/uikit_avatar.svg" width="50">
-                        <h4 class="uk-comment-title">Autor</h4>
-                        <p class="uk-comment-meta">Hace 12 días</p>
-                      </header>
-                      <div class="uk-comment-body">
-                        Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi.
-                      </div>
-                    </article>
-                  </li>
-                  <li>
-                    <article class="uk-comment">
-                      <header class="uk-comment-header">
-                        <img alt="" class="uk-comment-avatar" height="50" src="images/demo/uikit/uikit_avatar.svg" width="50">
-                        <h4 class="uk-comment-title">Autor</h4>
-                        <p class="uk-comment-meta">Hace 12 días</p>
-                      </header>
-                      <div class="uk-comment-body">
-                        Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi.
-                      </div>
-                    </article>
-                  </li>
-                </ul>  
-                <hr>
-                <h3 class="uk-module-title">Escribir un comentario</h3>  
-                <div class="tm-review">
-                  <form class="uk-form uk-form-stacked" action="#" method="post">
-                    <div class="uk-grid uk-margin-top">
-                      <div class="uk-width-1-1 uk-width-medium-1-2">
-                        <div class="uk-form-row">
-                          <label class="uk-form-label">Nombre *</label>
-                          <input type="text" class="uk-width-1-1" name="comment-name" size="30" required="required">
-                        </div>
-                      </div>
-
-                      <div class="uk-width-1-1 uk-width-medium-1-2">
-                        <div class="uk-form-row">
-                          <label class="uk-form-label">Email *</label>
-                          <input type="email" class="uk-width-1-1" name="comment-email" size="30" required="required">
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="uk-width-1-1">
-                      <div class="uk-form-row uk-margin-top">
-                        <label class="uk-form-label">Comentario</label>
-                        <textarea class="uk-width-1-1" name="comment-info"></textarea>
-                      </div>
-
-                      <button id="review_button" type="submit" class="uk-button uk-button-large uk-button-primary uk-margin-top uk-float-right">Enviar comentario</button>
-                    </div>
-                  </form>
-                </div>
-              -->
             </main>          
           </div>
 
@@ -425,16 +354,34 @@
                   .then(response => {
                       this.warehouse = response.data;
                       this.warehouses_id = this.warehouse.id;
+                      var condition = true;
                       
                       if (this.warehouse.description !== null) {
                         if (this.warehouse.description[0] !== null) {
                           this.description[0] = this.warehouse.description[0];
+                          if (condition) {
+                            // $('#la_zona_li').click();
+                            // document.getElementById("la_zona_li").click();
+
+                            console.log("la_zona");
+                            condition = false;
+                          }
                         }
                         if (this.warehouse.description[1] !== null) {
                           this.description[1] = this.warehouse.description[1];
+                          if (condition) {
+                            $('#la_vina').click();
+                            console.log("la_vina");
+                            condition = false;
+                          }
                         }
                         if (this.warehouse.description[2] !== null) {
                           this.description[2] = this.warehouse.description[2];
+                          if (condition) {
+                            $('#la_bodega').click();
+                            console.log("la_bodega");
+                            condition = false;
+                          }
                         } 
                       }
 
