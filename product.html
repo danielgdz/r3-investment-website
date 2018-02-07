@@ -83,7 +83,14 @@
                               <li class="uk-parent"><a href="#">Pinord</a>
                                 <ul class="uk-nav-sub">
                                   <li v-for="warehouse in warehouses">
-                                      <a v-bind:href="'warehouse.html?warehouse_id='+ warehouse.id">{{ warehouse.name }}</a>
+                                      <a v-if="warehouse.code == 'PINOR'" v-bind:href="'warehouse.html?warehouse_id='+ warehouse.id">{{ warehouse.name }}</a>
+                                  </li>
+                                </ul>
+                              </li>
+                              <li class="uk-parent"><a href="#">Marqués de Cáceres</a>
+                                <ul class="uk-nav-sub">
+                                  <li v-for="warehouse in warehouses">
+                                      <a v-if="warehouse.code == 'MARCA'" v-bind:href="'warehouse.html?warehouse_id='+ warehouse.id">{{ warehouse.name }}</a>
                                   </li>
                                 </ul>
                               </li>
@@ -314,7 +321,7 @@
         el: "#app",
         data: {
             name: "Daniel",
-            server: "http://52.15.217.203:8080",
+            server: "http://13.58.130.60:8080",
             warehouses: [],
             product: {},
             warehouses_id: 0
